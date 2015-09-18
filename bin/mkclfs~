@@ -1,0 +1,4 @@
+TOOLS_BASEDIR=$(dirname $(readlink -e $0))
+PKGMK_BASEDIR=$(dirname ${TOOLS_BASEDIR})
+. $PKGMK_BASEDIR/config/common.conf
+echo ${CLFS_DIR}
