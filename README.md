@@ -5,4 +5,4 @@ GCC cross compiler build script was modified from  https://gist.github.com/presh
 
 Cross compile scripts were modified from  https://github.com/repk/muslpi
 
-The build script for omxplayer and Kodi were from http://www.intestinate.com/pilfs/
+The build script for omxplayer and Kodi was reference to http://www.intestinate.com/pilfs/
