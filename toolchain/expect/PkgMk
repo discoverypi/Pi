@@ -1,0 +1,28 @@
+# Description: The Expect package contains a program for carrying out scripted dialogues with other interactive programs. 
+# URL: http://www.linuxfromscratch.org/lfs/view/development/chapter05/expect.html
+# Maintainer: 
+
+
+NAME=expect
+VERSION=5.45
+HOST_PKG=1
+
+DEPENDS=""
+SOURCES="http://prdownloads.sourceforge.net/expect/expect5.45.tar.gz"
+
+
+pkgmain() {
+	#cp ../../tcl8.6.3-src.tar.gz
+	#tar -zxf tcl8.6.3-src.tar.gz
+	cd expect5.45
+	cp -v configure{,.orig}
+	sed 's:/usr/local/bin:/bin:' configure.orig > configure
+
+	#CPPFLAGS="$CPPFLAGS -L/tools/x86_64-cross-linux-gnu/lib64/"
+	#LD_LIBRARY_PATH="/tools/x86_64-cross-linux-gnu/lib64:$LD_LIBRARY_PATH" \
+	./configure --prefix=${TOOLCHAIN_DIR} 		\
+		--with-tcl=${TOOLCHAIN_DIR}/lib 	\
+		--with-tclinclude=${TOOLCHAIN_DIR}/include
+	make -j${NR_JOBS}
+	make DESTDIR=${PKG} install
+}
