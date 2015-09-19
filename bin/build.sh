@@ -50,7 +50,9 @@ check_footprintfile() {
 
 
 clean_work() {
-	rm -rf ${WORK_DIR}
+	if [ -z "${NO_DELETE}" ]; then
+	   rm -rf ${WORK_DIR}
+	fi
 }
 
 
