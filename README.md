@@ -1,5 +1,5 @@
 # Pi
-Raspberry Pi cross compiled with GCC &amp; GLIBC  \<p>
+Raspberry Pi cross compiled with GCC &amp; GLIBC  
 
 GCC cross compiler build script was modified from  https://gist.github.com/preshing/41d5c7248dea16238b60
 
