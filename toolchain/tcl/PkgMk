@@ -19,5 +19,4 @@ pkgmain() {
 	./configure --prefix=${TOOLCHAIN_DIR}
 	make -j${NR_JOBS}
 	make DESTDIR=${PKG} install
-exit
 }
