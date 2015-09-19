@@ -9,4 +9,15 @@ The build script for omxplayer and Kodi was reference to http://www.intestinate.
 
 Install:
 
-PATH=
+PATH=/install path/Pi/bin:$PATH
+
+mkclfs
+
+as root:
+
+link -s /install path/Pi  /Pi
+
+ln -s /Pi/clfs/tools /tools
+
+ln -s /Pi/clfs/toolsx /toolsx
+
