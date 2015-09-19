@@ -11,11 +11,13 @@ Install:
 
 PATH=/install path/Pi/bin:$PATH
 
+cd /install path/Pi
+
 mkclfs
 
 as root:
 
-link -s /install path/Pi  /Pi
+ln -s /install path/Pi  /Pi
 
 ln -s /Pi/clfs/tools /tools
 
