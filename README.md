@@ -8,12 +8,16 @@ Cross compile scripts were modified from  https://github.com/repk/muslpi
 The build script for omxplayer and Kodi was reference to http://www.intestinate.com/pilfs/
 
 Install:
-as root:
-ln -s /install path/Pi  /Pi
-ln -s /Pi/clfs/tools /tools
-ln -s /Pi/clfs/toolsx /toolsx
+
+sudo ln -s /install path/Pi  /Pi
+
+sudo ln -s /Pi/clfs/tools /tools
+
+sudo ln -s /Pi/clfs/toolsx /toolsx
 
 PATH=/Pi/bin:$PATH
+
 cd /Pi
+
 mkclfs
 
