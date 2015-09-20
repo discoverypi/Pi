@@ -1,0 +1,26 @@
+# Description: The International Components for Unicode (ICU) package is a mature, widely used set of C/C++ libraries providing Unicode and Globalization support for software applications. ICU is widely portable and gives applications the same results on all platforms. 
+# URL: http://download.icu-project.org/files/icu4c/55.1/icu4c-55_1-src.tgz
+# Maintainer:
+
+
+NAME=icu
+VERSION=55_1-src
+
+
+DEPENDS=""
+SOURCES="http://download.icu-project.org/files/icu4c/55.1/icu4c-55_1-src.tgz"
+
+
+pkgmain() {
+	tar -xzf icu4c-55_1-src.tgz
+	cd icu/source
+	
+	LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/tools/${CLFS_HOST}/lib64"       \
+	./configure --build=${CLFS_HOST} --host=${CLFS_TARGET}		\
+		--prefix=/usr --with-cross-build=/Pi/toolchain/icu/work/src/icu/source \
+		 --enable-shared=yes --enable-tests=no --enable-samples=no
+
+	make -j${NR_JOBS}
+	make DESTDIR=${PKG} install
+
+}

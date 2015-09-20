@@ -1,0 +1,23 @@
+# The libpng package contains libraries used by other programs for reading and writing PNG files. The PNG format was designed as a replacement for GIF and, to a lesser extent, TIFF, with many improvements and extensions and lack of patent problems. 
+# URL: http://downloads.sourceforge.net/libpng/libpng-1.6.18.tar.xz
+# Maintainer:
+
+
+NAME=libpng
+VERSION=1.6.18
+
+
+DEPENDS=""
+SOURCES="http://downloads.sourceforge.net/libpng/libpng-1.6.18.tar.xz"
+
+
+pkgmain() {
+	cd ${NAME}-${VERSION}
+
+	./configure --build=${CLFS_HOST} --host=${CLFS_TARGET}		\
+		--prefix=/usr --disable-static
+
+	make -j${NR_JOBS}
+	make DESTDIR=${PKG} install
+
+}

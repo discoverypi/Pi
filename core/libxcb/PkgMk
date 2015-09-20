@@ -1,0 +1,28 @@
+# Description: X-protocol C binding
+# URL: http://www.paldo.org/index-section-packages-page-main-releaseid-8617.html
+# Maintainer:
+
+
+NAME=libxcb
+VERSION=1.11
+
+
+DEPENDS=""
+SOURCES="http://www.paldo.org/paldo/sources/xcb/libxcb-1.11.tar.bz2"
+
+
+pkgmain() {
+	cd ${NAME}-${VERSION}
+
+
+	./configure --build=${CLFS_HOST} --host=${CLFS_TARGET}		\
+		--prefix=/usr --disable-static --disable-build-docs  \
+		XCBPROTO_XCBINCLUDEDIR=${CLFS_DIR}/usr/share/xcb
+XCBPROTO_XCBPYTHONDIR=${CLFS_DIR}/usr/lib/python2.7/site-packages pyexecdir=${CLFS_DIR}/usr/lib/python2.7/site-packages pythondir=${CLFS_DIR}/usr/lib/python2.7/site-packages
+	#cp ../../../Makefile .
+
+	make -j${NR_JOBS} XCBPROTO_XCBINCLUDEDIR=${CLFS_DIR}/usr/share/xcb
+XCBPROTO_XCBPYTHONDIR=${CLFS_DIR}/usr/lib/python2.7/site-packages pyexecdir=${CLFS_DIR}/usr/lib/python2.7/site-packages pythondir=${CLFS_DIR}/usr/lib/python2.7/site-packages
+	make DESTDIR=${PKG} install
+
+}

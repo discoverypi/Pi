@@ -1,0 +1,34 @@
+# Description: Collection of utilities for controlling TCP / IP networking and
+#		traffic control
+# URL: http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2
+# Maintainer: Remi Pommarel, repk at triplefau dot lt
+
+
+NAME=iproute2
+VERSION=4.1.1
+
+
+DEPENDS="iptables"
+SOURCES="https://www.kernel.org/pub/linux/utils/net/${NAME}/${NAME}-${VERSION}.tar.gz"
+PATCHES="iproute2.patch"
+
+
+pkgmain() {
+	cd ${NAME}-${VERSION}
+	#cp ../../../Makefile .
+	#process_patches
+	#cp ../../../namespace.h include/.
+	sed -i '/^TARGETS/s@arpd@@g' misc/Makefile
+	sed -i /ARPD/d Makefile
+	sed -i 's/arpd.8//' man/man8/Makefile
+
+
+	make -j${NR_JOBS}  DESTDIR=${PKG}  CC="${CC}"	\
+		DOCDIR=/usr/share/doc/iproute2				\
+		MANDIR=/usr/share/man 			\
+		IPT_LIB_DIR=${CLFS_DIR}/usr/include
+
+	make -j${NR_JOBS} DESTDIR=${PKG} CC="${CC}"	\
+		DOCDIR=/usr/share/doc/iproute2 MANDIR=/usr/share/man	\
+		IPT_LIB_DIR=${CLFS_DIR}/usr/include install
+}

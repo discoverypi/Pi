@@ -1,0 +1,26 @@
+# Description:
+# URL:
+# Maintainer:
+
+
+NAME=yajl
+VERSION=2.1.0
+
+
+DEPENDS=""
+SOURCES="https://github.com/lloyd/yajl/archive/2.1.0.tar.gz"
+
+
+pkgmain() {
+	#cp ../../2.1.0.tar.gz yajl-2.1.0.tar.gz
+	#tar -zxf yajl-2.1.0.tar.gz
+	cd ${NAME}-${VERSION}
+	mkdir build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+
+
+	make -j${NR_JOBS}
+	make DESTDIR=${PKG} install
+
+}

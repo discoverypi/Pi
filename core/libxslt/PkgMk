@@ -1,0 +1,23 @@
+# Description: xslt library
+# URL: http://www.paldo.org/index-section-packages-page-main-releaseid-5283.html
+# Maintainer:
+
+
+NAME=libxslt
+VERSION=1.1.28
+
+
+DEPENDS=""
+SOURCES="http://www.paldo.org/paldo/sources/libxslt/libxslt-1.1.28.tar.bz2"
+
+
+pkgmain() {
+	cd ${NAME}-${VERSION}
+
+	./configure --build=${CLFS_HOST} --host=${CLFS_TARGET}		\
+		--prefix=/usr  --disable-static 
+
+	make -j${NR_JOBS}
+	make DESTDIR=${PKG} install
+
+}

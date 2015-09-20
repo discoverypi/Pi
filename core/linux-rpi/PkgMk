@@ -1,0 +1,33 @@
+# Description: Linux kernel for Rpi
+# URL: https://kernel.org
+# Maintainer: Remi Pommarel, repk at triplefau dot lt
+
+
+NAME=linux-rpi
+VERSION=4.0.y
+
+
+DEPENDS=""
+SOURCES="https://github.com/raspberrypi/linux/archive/rpi-${VERSION}.tar.gz"
+
+
+pkgmain() {
+	cd linux-rpi-$VERSION
+        KERNEL=kernel7
+	make ARCH=arm CROSS_COMPILE=${CLFS_TARGET}- bcm2709_defconfig
+	make -j${NR_JOBS} ARCH=arm CROSS_COMPILE=${CLFS_TARGET}-
+	make -j${NR_JOBS} ARCH=arm CROSS_COMPILE=${CLFS_TARGET}- modules
+
+	make ARCH=arm CROSS_COMPILE=${CLFS_TARGET}- INSTALL_MOD_PATH=${PKG} \
+		DEPMOD=${TOOLCHAIN_DIR}/sbin/depmod modules_install
+	mkdir -p ${PKG}/boot
+
+	rm ${PKG}/lib/modules/4.0.7-v7/build
+	rm ${PKG}/lib/modules/4.0.7-v7/source
+	ln -s ../../../usr/src/linux-rpi-${VERSION}			\
+		${PKG}/lib/modules/4.0.7-v7/build
+	ln -s ../../../usr/src/linux-rpi-${VERSION}			\
+		${PKG}/lib/modules/4.0.7-v7/source
+
+	cp arch/arm/boot/Image ${PKG}/boot/kernel.img
+}

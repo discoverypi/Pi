@@ -1,0 +1,28 @@
+# Description:
+# URL:
+# Maintainer:
+
+
+NAME=libx264
+VERSION=
+
+
+DEPENDS=""
+SOURCES="http://ftp.gnu.org/gnu/wget/wget-1.16.3.tar.xz"
+
+
+pkgmain() {
+	git clone git://git.videolan.org/x264
+	cd x264
+	#cp ../../../configure .
+
+	./configure --build=${CLFS_HOST} --host=${CLFS_TARGET}		\
+		--prefix=/usr --enable-static --cross-prefix=${CLFS_TARGET}- \
+		--sysroot=${CLFS_DIR} \
+		--enable-pic \
+		--enable-static --enable-shared --disable-asm
+
+	make -j${NR_JOBS}
+	make DESTDIR=${PKG} install
+
+}

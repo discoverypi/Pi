@@ -1,0 +1,26 @@
+# Description:
+# URL:
+# Maintainer:
+
+
+NAME=tinyxml
+VERSION=2_6_2
+PATCHES="tinyxml_2_6_2-shared_lib.patch"
+
+
+DEPENDS=""
+SOURCES="http://sourceforge.net/projects/tinyxml/files/tinyxml/2.6.2/tinyxml_2_6_2.tar.gz"
+
+
+pkgmain() {
+	cd tinyxml
+	process_patches
+	cp ../../../Makefile .
+
+	make -j${NR_JOBS}
+	mkdir ${PKG}/usr
+	mkdir ${PKG}/usr/lib
+	mkdir ${PKG}/usr/include
+	make DESTDIR=${PKG} install
+
+}

@@ -1,0 +1,23 @@
+# Description: The libvorbis package contains a general purpose audio and music encoding format. This is useful for creating (encoding) and playing (decoding) sound in an open (patent free) format. 
+# URL: http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.5.tar.xz
+# Maintainer:
+
+
+NAME=libvorbis
+VERSION=1.3.5
+
+
+DEPENDS=""
+SOURCES="http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.5.tar.xz"
+
+
+pkgmain() {
+	cd ${NAME}-${VERSION}
+
+	./configure --build=${CLFS_HOST} --host=${CLFS_TARGET}		\
+		--prefix=/usr --disable-static
+
+	make -j${NR_JOBS}
+	make DESTDIR=${PKG} install
+
+}

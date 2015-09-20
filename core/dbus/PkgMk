@@ -1,0 +1,32 @@
+# Description: D-Bus is a message bus system, a simple way for applications to talk to one another. D-Bus supplies both a system daemon (for events such as “new hardware device added” or “printer queue changed”) and a per-user-login-session daemon (for general IPC needs among user applications). Also, the message bus is built on top of a general one-to-one message passing framework, which can be used by any two applications to communicate directly (without going through the message bus daemon). 
+# URL: http://dbus.freedesktop.org/releases/dbus/dbus-1.10.0.tar.gz
+# Maintainer:
+
+
+NAME=dbus
+VERSION=1.10.0
+
+
+DEPENDS=""
+SOURCES="http://dbus.freedesktop.org/releases/dbus/dbus-1.10.0.tar.gz"
+
+
+pkgmain() {
+	cd ${NAME}-${VERSION}
+
+	./configure --build=${CLFS_HOST} --host=${CLFS_TARGET}		\
+		--prefix=/usr  \
+		--sysconfdir=/etc              \
+            --localstatedir=/var           \
+            --disable-doxygen-docs         \
+            --disable-xml-docs             \
+            --disable-static               \
+            --disable-systemd              \
+            --without-systemdsystemunitdir \
+            --with-console-auth-dir=/run/console/ \
+            --docdir=/usr/share/doc/dbus-1.10.0  
+
+	make -j${NR_JOBS}
+	make DESTDIR=${PKG} install
+
+}

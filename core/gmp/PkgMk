@@ -1,0 +1,25 @@
+# Description: Multiple Precision Arithmetic Library
+# URL: http://gmplib.org/
+# Maintainer: Remi Pommarel, repk at triplefau dot lt
+
+
+NAME=gmp
+VERSION=5.0.5
+
+
+DEPENDS=""
+SOURCES="http://ftp.gnu.org/gnu/${NAME}/${NAME}-${VERSION}.tar.xz"
+
+
+pkgmain() {
+	cd ${NAME}-$VERSION
+	patch_unknown_target configfsf.sub
+
+	CPPFLAGS=-fexceptions ABI=""					\
+	./configure --prefix=/usr --build=${CLFS_HOST}		\
+		--host=${CLFS_TARGET} --enable-cxx --enable-mpbsd \
+		--disable-static
+
+	make -j${NR_JOBS}
+	make DESTDIR=${PKG} install
+}

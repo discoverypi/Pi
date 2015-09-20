@@ -1,0 +1,27 @@
+# Description: Berkeley DB
+# URL: http://www.paldo.org/paldo/sources/db/db-6.1.23.tar.bz2
+# Maintainer:
+
+
+NAME=db
+VERSION=6.1.23
+
+
+DEPENDS=""
+SOURCES="http://www.paldo.org/paldo/sources/db/db-6.1.23.tar.bz2"
+
+
+pkgmain() {
+	cd ${NAME}-${VERSION}
+	cd build_unix
+
+	../dist/configure --build=${CLFS_HOST} --host=${CLFS_TARGET}		\
+		--prefix=/usr  \
+		--enable-compat185 \
+		--enable-cxx 	\
+		--disable-static   
+
+	make -j${NR_JOBS}
+	make DESTDIR=${PKG} install
+
+}

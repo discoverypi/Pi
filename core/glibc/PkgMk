@@ -1,0 +1,84 @@
+# Description: C library
+# URL: http://www.musl-libc.org/
+# Maintainer: Remi Pommarel, repk at triplefau dot lt
+
+
+NAME=glibc
+VERSION=2.13
+
+
+DEPENDS=""
+SOURCES="https://ftp.gnu.org/gnu/${NAME}/${NAME}-${VERSION}.tar.xz"
+
+
+pkgmain() {
+	cp ../../glibc-ports-2.13.tar.gz .
+	tar xfk glibc-ports-2.13.tar.gz
+	cd ${NAME}-${VERSION}
+	
+	ln -s ../glibc-ports-2.13 ports
+
+	sed -e '/ia32/s/^/1:/' \
+    	-e '/SSE2/s/^1://' \
+    	-i  sysdeps/i386/i686/multiarch/mempcpy_chk.S
+	sed -i '/glibc.*pad/{i\  buflen = buflen > pad ? buflen - pad : 0;
+                     s/ + pad//}' resolv/nss_dns/dns-host.c
+	sed -e '/tst-audit2-ENV/i CFLAGS-tst-audit2.c += -fno-builtin' \
+    	-i elf/Makefile
+
+	mkdir build
+	cd build
+	../configure --prefix=/usr				\
+		--build=${CLFS_BUILD}                                   \
+		--host=${CLFS_TARGET}                                 \
+		--target=${CLFS_TARGET}                                 \
+		--with-headers=${CLFS_DIR}/usr/include			\
+		--with-sysroot=${CLFS_DIR}				\
+		--with-build-sysroot=${CLFS_DIR}			\
+		--disable-multilib --disable-werror			\
+		--enable-kernel=2.6.32					\
+		--enable-obsolete-rpc					\
+
+	make -j${NR_JOBS} 
+	make  install_root=${PKG}/usr prefix="" install 
+	mkdir ${PKG}/etc
+	touch ${PKG}/etc/ld.so.conf
+	cp -v ../nscd/nscd.conf ${PKG}/etc/nscd.conf
+	mkdir -pv  ${PKG}/var/cache/nscd
+
+	cat > ${PKG}/etc/nsswitch.conf << "EOF"
+# Begin /etc/nsswitch.conf
+
+passwd: files
+group: files
+shadow: files
+
+hosts: files dns
+networks: files
+
+protocols: files
+services: files
+ethers: files
+rpc: files
+
+# End /etc/nsswitch.conf
+EOF
+
+cat > ${PKG}/etc/ld.so.conf << "EOF"
+# Begin /etc/ld.so.conf
+/usr/lib
+/opt/lib
+
+EOF
+
+mkdir -pv ${PKG}/etc/ld.so.conf.d
+mkdir ${PKG}/lib
+cp ${PKG}/usr/lib/libc.so ${PKG}/lib/.
+cp ${PKG}/usr/lib/ld-2.13.so ${PKG}/lib/ld-linux-armhf.so.3
+cp ${PKG}/usr/lib/libc.so.6 ${PKG}/lib/.
+cp ${PKG}/usr/lib/libc_nonshared.a ${PKG}/lib/.
+cp ${PKG}/usr/lib/libpthread.so.0 ${PKG}/lib/.
+cp ${PKG}/usr/lib/libpthread_nonshared.a ${PKG}/lib/.
+ln -sfv ld-linux-armhf.so.3 ${PKG}/lib/ld-linux.so.3
+
+}

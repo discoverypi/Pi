@@ -1,0 +1,24 @@
+# Description: The ALSA Library package contains the ALSA library used by programs (including ALSA Utilities) requiring access to the ALSA sound interface. 
+# URL: http://alsa.cybermirror.org/lib/alsa-lib-1.0.29.tar.bz2
+# Maintainer: 
+
+
+NAME=alsa-lib
+VERSION=1.0.29
+
+
+DEPENDS=""
+SOURCES="http://alsa.cybermirror.org/lib/alsa-lib-1.0.29.tar.bz2"
+
+
+pkgmain() {
+	cd ${NAME}-$VERSION
+
+	./configure --prefix=/usr --build=${CLFS_HOST}			\
+		--host=${CLFS_TARGET} \
+		--with-pythonlibs="-L${CLFS_DIR}/usr/lib" \
+		--with-pythonincludes="-I${CLFS_DIR}/usr/include/python2.7"  					
+
+	make -j${NR_JOBS} 
+	make DESTDIR=${PKG} install
+}

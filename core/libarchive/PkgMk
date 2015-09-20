@@ -1,0 +1,23 @@
+# Description: File type guesser
+# URL: http://www.darwinsys.com/file/
+# Maintainer: Remi Pommarel, repk at triplefau dot lt
+
+
+NAME=libarchive
+VERSION=3.1.2
+
+
+DEPENDS=""
+SOURCES="http://www.libarchive.org/downloads/libarchive-3.1.2.tar.gz"
+
+
+pkgmain() {
+	cd ${NAME}-${VERSION}
+	CPPFLAGS="$CPPFLAGS -I$${CLFS_DIR}/usr/include/libxml2 " \
+	./configure --host=${CLFS_TARGET} --prefix=/usr \
+		    --disable-static  \
+			LIBS="-L${CLFS_DIR}/usr/lib"		    
+
+	make -j${NR_JOBS}
+	make DESTDIR=${PKG} install
+}
