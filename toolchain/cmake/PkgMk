@@ -14,11 +14,11 @@ SOURCES="http://www.cmake.org/files/v3.3/cmake-3.3.1.tar.gz"
 
 pkgmain() {
 	cd ${NAME}-${VERSION}
-	#export LD_LIBRARY_PATH=/tools/x86_64-cross-linux-gnu/lib64:$LD_LIBRARY_PATH
+	export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${TOOLCHAIN_DIR}/lib" 
 	PATH=/toolsx/bin:$PATH
+	mv ${TOOLCHAIN_DIR}/bin/bsdtar ${TOOLCHAIN_DIR}/bin/org.bsdtar
 
         LDFLAGS="-Wl,-rpath-link,${TOOLCHAIN_DIR}/lib"          \
-        LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${TOOLCHAIN_DIR}/lib" \
         CPPFLAGS="-I${TOOLCHAIN_DIR}/include/libxml2 -I/tools/include -L${TOOLCHAIN_DIR}/lib $CPPFLAGS" \
 	./configure --prefix=${TOOLCHAIN_DIR} \
 		    --no-system-jsoncpp \
