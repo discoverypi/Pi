@@ -4,8 +4,9 @@
 
 
 NAME=icu
-VERSION=55_1-src
+VERSION=55.1
 HOST_PKG=1
+NO_DELETE=1
 
 
 DEPENDS=""
@@ -22,6 +23,5 @@ pkgmain() {
 
 	make -j${NR_JOBS}
 	make DESTDIR=${PKG} install
-	exit
 
 }
