@@ -52,4 +52,4 @@ toolchain/readline  \
 toolchain/pcre  \
 toolchain/swig  \
 toolchain/tinyxml \
-toolchain/automake" 
+toolchain/bc" 
