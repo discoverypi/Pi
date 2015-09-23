@@ -18,6 +18,7 @@ pkgmain() {
 	patch_unknown_target config/config.sub
 	process_patches
 	copy_files
+	export CFLAGS="$CFLAGS -I${CLFS_DIR}/usr/include"
 
 	./configure --build=${CLFS_HOST} --host=${CLFS_TARGET}		\
 		--prefix=/usr --exec-prefix=""				\
