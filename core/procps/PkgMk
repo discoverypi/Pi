@@ -17,6 +17,6 @@ pkgmain() {
 	cp ../../../Makefile .
 	process_patches
 
-	make CPPFLAGS= lib64=lib m64= ldl=proc/libproc-3.2.8.so
+	make CPPFLAGS="-I${CLFS_DIR}/usr/include" lib64=lib m64= ldl=proc/libproc-3.2.8.so
 	make DESTDIR=${PKG} lib64=lib m64= ldconfig= install="install -D" install
 }
