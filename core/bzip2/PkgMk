@@ -14,8 +14,8 @@ PATCHES="bzip2.patch"
 
 pkgmain() {
 	cd ${NAME}-${VERSION}
+	process_patches
 
-	copy_files
 	make -f Makefile-libbz2_so CC="${CC}" AR="${AR}" RANLIB="${RANLIB}"
 	make clean
 	make CC="${CC}" AR="${AR}" RANLIB="${RANLIB}"
