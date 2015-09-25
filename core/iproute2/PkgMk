@@ -21,6 +21,7 @@ pkgmain() {
 	sed -i '/^TARGETS/s@arpd@@g' misc/Makefile
 	sed -i /ARPD/d Makefile
 	sed -i 's/arpd.8//' man/man8/Makefile
+	export CFLAGS="$CFLAGS -I${CLFS_DIR}/usr/include"
 
 
 	make -j${NR_JOBS}  DESTDIR=${PKG}  CC="${CC}"	\

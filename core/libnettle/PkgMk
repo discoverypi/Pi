@@ -15,6 +15,8 @@ pkgmain() {
 	cd nettle-$VERSION
 
 	patch_unknown_target ./config.sub
+	export CFLAGS="$CFLAGS -I${CLFS_DIR}/usr/include"
+
 
 	./configure --prefix=/usr --build=${CLFS_HOST}			\
 		--host=${CLFS_TARGET} --disable-documentation
