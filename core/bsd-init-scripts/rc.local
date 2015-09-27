@@ -1,0 +1,3 @@
+ntpdate 0.north-america.pool.ntp.org
+chmod 777 /dev/vchiq
+/etc/rc.d/kodi start

@@ -13,8 +13,11 @@ SOURCES="https://github.com/taglib/taglib/releases/download/v1.9.1/taglib-1.9.1.
 
 pkgmain() {
 	cd ${NAME}-${VERSION}
+	export CPPFLAGS="$CPPFLAGS -I${CLFS_DIR}/usr/include"
+	export CXXFLAGS="$CXXFLAGS -I${CLFS_DIR}/usr/include"
 	mkdir build
 	cd build
+	cp ../../../../CMakeCache.txt .
 	cmake -DCMAKE_INSTALL_PREFIX=/usr \
 	      -DCMAKE_BUILD_TYPE=Release ..
 	cp ../../../../CMakeCache.txt .

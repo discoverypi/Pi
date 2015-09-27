@@ -13,7 +13,8 @@ SOURCES="http://ffmpeg.org/releases/ffmpeg-2.7.2.tar.bz2"
 
 pkgmain() {
 	cd ${NAME}-${VERSION}
-	CFLAGS="${CFLAGS} --sysroot=/Pi/clfs -fPIC"
+	export CPPFLAGS="$CPPFLAGS -I${CLFS_DIR}/usr/include"
+	CFLAGS="${CFLAGS} -I${CLFS_DIR}/usr/include --sysroot=/Pi/clfs -fPIC"
 	LDFLAGS="$LDFLAGS" \
 	./configure 		\
 		--prefix=/usr  	\

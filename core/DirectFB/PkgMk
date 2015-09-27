@@ -13,6 +13,7 @@ SOURCES="http://pkgs.fedoraproject.org/repo/pkgs/directfb/DirectFB-1.6.3.tar.gz/
 
 pkgmain() {
 	cd ${NAME}-${VERSION}
+	export CPPFLAGS="$CPPFLAGS -I${CLFS_DIR}/usr/include"
 	EGL_CFLAGS="-I${CLFS_DIR}/opt/vc/include -I${CLFS_DIR}/opt/vc/include/interface/vcos/pthreads \
 	-I${CLFS_DIR}/opt/vc/include/interface/vmcs_host/linux" \
 	EGL_LIBS="-lEGL -lGLESv2 $LIBS -L${CLFS_DIR}/opt/vc/lib" \ 

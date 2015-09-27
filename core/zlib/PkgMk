@@ -5,6 +5,7 @@
 
 NAME=zlib
 VERSION=1.2.8
+NO_DELETE=1
 
 
 DEPENDS=""

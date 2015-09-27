@@ -5,6 +5,7 @@
 
 NAME=bzip2
 VERSION=1.0.6
+NO_DELETE=1
 
 
 DEPENDS=""

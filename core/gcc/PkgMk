@@ -9,7 +9,6 @@ VERSION=4.9.2
 
 DEPENDS="mpfr gmp mpc ppl cloog-ppl"
 SOURCES="https://ftp.gnu.org/gnu/gcc/gcc-4.9.2/gcc-4.9.2.tar.gz"
-PATCHES="gcc-sdt.patch gcc-${VERSION}-musl.diff"
 
 
 pkgmain() {
@@ -24,10 +23,7 @@ pkgmain() {
 
 	mkdir build
 	cd build
-
-	#LDFLAGS="-Wl,-rpath-link,${TOOLCHAIN_DIR}/${CLFS_TARGET}/lib"	\
-	#CPPFLAGS="${CPPFLAGS} -I${TOOLCHAIN_DIR}/${CLFS_TARGET}/include" \
-	#CXXFLAGS="${CXXFLAGS} -I${TOOLCHAIN_DIR}/${CLFS_TARGET}/include" \
+	export LDFLAGS="-Wl,-rpath-link,${TOOLCHAIN_DIR}/${CLFS_TARGET}/lib -L${CLFS_DIR}/usr/lib"
 	MAKEINFO=missing						\
 	../configure --prefix=/usr --libexecdir=/usr/lib		\
 		--build=${CLFS_HOST} --host=${CLFS_TARGET}	\

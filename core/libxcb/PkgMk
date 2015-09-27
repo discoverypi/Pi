@@ -13,7 +13,9 @@ SOURCES="http://www.paldo.org/paldo/sources/xcb/libxcb-1.11.tar.bz2"
 
 pkgmain() {
 	cd ${NAME}-${VERSION}
-
+	export CPPFLAGS="$CPPFLAGS -I${CLFS_DIR}/usr/include"
+	mv ${TOOLCHAIN_DIR}/lib/python2.7/site-packages ${TOOLCHAIN_DIR}/lib/python2.7/orig.site-packages
+	ln -s ${CLFS_DIR}/usr/lib/python2.7/site-packages ${TOOLCHAIN_DIR}/lib/python2.7/site-packages
 
 	./configure --build=${CLFS_HOST} --host=${CLFS_TARGET}		\
 		--prefix=/usr --disable-static --disable-build-docs  \
@@ -24,5 +26,7 @@ XCBPROTO_XCBPYTHONDIR=${CLFS_DIR}/usr/lib/python2.7/site-packages pyexecdir=${CL
 	make -j${NR_JOBS} XCBPROTO_XCBINCLUDEDIR=${CLFS_DIR}/usr/share/xcb
 XCBPROTO_XCBPYTHONDIR=${CLFS_DIR}/usr/lib/python2.7/site-packages pyexecdir=${CLFS_DIR}/usr/lib/python2.7/site-packages pythondir=${CLFS_DIR}/usr/lib/python2.7/site-packages
 	make DESTDIR=${PKG} install
+	rm ${TOOLCHAIN_DIR}/lib/python2.7/site-packages
+	mv ${TOOLCHAIN_DIR}/lib/python2.7/orig.site-packages ${TOOLCHAIN_DIR}/lib/python2.7/site-packages
 
 }

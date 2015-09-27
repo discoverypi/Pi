@@ -13,7 +13,7 @@ SOURCES="http://www.paldo.org/paldo/sources/xt/libXt-1.1.4.tar.bz2"
 
 pkgmain() {
 	cd ${NAME}-${VERSION}
-
+	export CPPFLAGS="$CPPFLAGS -I${CLFS_DIR}/usr/include"
 	./configure --build=${CLFS_HOST} --host=${CLFS_TARGET}		\
 		--prefix=/usr --disable-static CC_FOR_BUILD=/tools/bin/${CLFS_HOST}-gcc CFLAGS_FOR_BUILD="-I${TOOLCHAIN_DIR}/include" LDFLAG_FOR_BUILD="-L${TOOLCHAIN_DIR}/lib"
 

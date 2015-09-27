@@ -13,7 +13,7 @@ SOURCES="http://www.paldo.org/paldo/sources/sqlite3/sqlite-autoconf-3.8.11.1.tar
 
 pkgmain() {
 	cd sqlite-autoconf-3081101
-	CFLAGS="$CFLAGS -DYYSTACKDEPTH=500 -DSQLITE_DISABLE_DIRSYNC=1 -DSQLITE_SECURE_DELETE=1 -DSQLITE_ENABLE_UNLOCK_NOTIFY=1 -DUSE_PREAD64=1"  \
+	CFLAGS="$CFLAGS -DYYSTACKDEPTH=500 -DSQLITE_DISABLE_DIRSYNC=1 -DSQLITE_SECURE_DELETE=1 -DSQLITE_ENABLE_UNLOCK_NOTIFY=1 -DUSE_PREAD64=1 -I${CLFS_DIR}/usr/include"  \
 	./configure --build=${CLFS_HOST} --host=${CLFS_TARGET}		\
 		--prefix=/usr --disable-static
 

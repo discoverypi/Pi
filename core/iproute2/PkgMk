@@ -10,14 +10,10 @@ VERSION=4.1.1
 
 DEPENDS="iptables"
 SOURCES="https://www.kernel.org/pub/linux/utils/net/${NAME}/${NAME}-${VERSION}.tar.gz"
-PATCHES="iproute2.patch"
 
 
 pkgmain() {
 	cd ${NAME}-${VERSION}
-	#cp ../../../Makefile .
-	#process_patches
-	#cp ../../../namespace.h include/.
 	sed -i '/^TARGETS/s@arpd@@g' misc/Makefile
 	sed -i /ARPD/d Makefile
 	sed -i 's/arpd.8//' man/man8/Makefile

@@ -13,6 +13,7 @@ SOURCES="http://downloads.sourceforge.net/freetype/freetype-2.6.tar.bz2"
 
 pkgmain() {
 	cd ${NAME}-$VERSION
+	export CPPFLAGS="$CPPFLAGS -I${CLFS_DIR}/usr/include"
 	sed -i  -e "/AUX.*.gxvalid/s@^# @@" \
         -e "/AUX.*.otvalid/s@^# @@" \
         modules.cfg 

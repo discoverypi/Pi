@@ -5,6 +5,7 @@
 
 NAME=icu
 VERSION=55_1-src
+NO_DELETE=1
 
 
 DEPENDS=""
@@ -17,7 +18,7 @@ pkgmain() {
 	
 	LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/tools/${CLFS_HOST}/lib64"       \
 	./configure --build=${CLFS_HOST} --host=${CLFS_TARGET}		\
-		--prefix=/usr --with-cross-build=/Pi/toolchain/icu/work/src/icu/source \
+		--prefix=/usr --with-cross-build=/Pi/toolchain/icu-55_1/work/src/icu/source \
 		 --enable-shared=yes --enable-tests=no --enable-samples=no
 
 	make -j${NR_JOBS}
