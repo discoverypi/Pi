@@ -11,6 +11,7 @@ core/cloog-ppl   \
 core/mpc   \
 core/binutils   \
 core/gcc   \
+core/zlib   \
 core/sed   \
 core/ncurses   \
 core/util-linux   \
@@ -86,12 +87,10 @@ core/esound   \
 core/libtheora   \
 core/alsa-plugins   \
 core/icu-55_1   \
-core/zlib   \
 core/boost   \
 core/pcre   \
 core/dbus   \
 core/firmware   \
-core/omxplayer   \
 core/db   \
 core/pkg-config   \
 core/xproto   \
@@ -150,6 +149,10 @@ core/tinyxml   \
 core/libx264   \
 core/ffmpeg   \
 core/libarchive   \
+core/omxplayer   \
+core/libcec-2.2.0 \
 core/xbmc   \
 core/dcadec   \
-core/libcec-2.2.0"
+core/libtirpc  \
+core/cifs-utils \
+core/nfs-utils"
