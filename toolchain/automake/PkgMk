@@ -16,7 +16,7 @@ PATCHES="automake-reloc.patch"
 pkgmain() {
 	cd ${NAME}-${VERSION}
 
-	process_patches
+	#process_patches
 	./configure --prefix=${TOOLCHAIN_DIR}
 
 	make -j${NR_JOBS}
