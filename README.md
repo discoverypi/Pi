@@ -1,5 +1,5 @@
 # Pi
-Raspberry Pi cross compiled with GCC &amp; GLIBC  
+Raspberry Pi cross compiled with GCC-4.9.2 &amp; GLIBC-2.13  
 
 GCC cross compiler build script was modified from  https://gist.github.com/preshing/41d5c7248dea16238b60
 
@@ -21,3 +21,16 @@ cd /Pi
 
 mkclfs
 
+cd /Pi/toolchain/gcch
+
+build_hostgcc.sh
+
+cd /Pi/toolchain/gccx
+
+build_crossgcc.sh
+
+cd /Pi
+
+install_pkglist.sh -f config/pkg_lists/toolchain
+
+install_pkglist.sh -f config/pkg_lists/core
