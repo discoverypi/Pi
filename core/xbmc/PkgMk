@@ -32,6 +32,6 @@ pkgmain() {
 	mv ${CLFS_DIR}/usr/include/org.event.h ${CLFS_DIR}/usr/include/event.h
 	mkdir ${PKG}/etc
 	mkdir ${PKG}/etc/rc.d
-	cp rc-kodi ${PKG}/etc/rc.d/.
+	cp rc-kodi ${PKG}/etc/rc.d/kodi
 
 }
