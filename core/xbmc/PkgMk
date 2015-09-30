@@ -10,11 +10,13 @@ PATCHES="xbmc-14.1-Helix-rpi2-target.patch"
 
 DEPENDS=""
 SOURCES="https://github.com/xbmc/xbmc/archive/14.2-Helix.tar.gz"
+FILES="rc-kodi"
 
 
 pkgmain() {
 	#git clone git://github.com/xbmc/xbmc.git
 	cd xbmc-14.2-Helix
+	copy_files
 	mv ${CLFS_DIR}/usr/include/event.h ${CLFS_DIR}/usr/include/org.event.h
 	patch -Np1 -i ../../../xbmc-14.1-Helix-rpi2-target.patch
 	./bootstrap
@@ -28,5 +30,8 @@ pkgmain() {
 	make -j${NR_JOBS}
 	make DESTDIR=${PKG} install
 	mv ${CLFS_DIR}/usr/include/org.event.h ${CLFS_DIR}/usr/include/event.h
+	mkdir ${PKG}/etc
+	mkdir ${PKG}/etc/rc.d
+	cp rc-kodi ${PKG}/etc/rc.d/.
 
 }
