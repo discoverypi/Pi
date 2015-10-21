@@ -1,7 +1,8 @@
 # Pi
+
 Raspberry Pi cross compiled with GCC-4.9.2 &amp; GLIBC-2.13  
 
-GCC cross compiler build script was modified from  https://gist.github.com/preshing/41d5c7248dea16238b60, https://github.com/repk/muslpi, http://www.intestinate.com/pilfs/
+The GCC cross compile script was modified from  https://gist.github.com/preshing/41d5c7248dea16238b60, https://github.com/repk/muslpi, http://www.intestinate.com/pilfs/
 
 Install:
 
