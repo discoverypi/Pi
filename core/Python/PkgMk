@@ -15,7 +15,8 @@ PATCHES="Python-2.7.2-xcompile.patch"
 pkgmain() {
 	cd ${NAME}-${VERSION}
 	process_patches
-	#LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/tools/lib64:/tools/lib"
+	LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/tools/lib64:/tools/lib"
+	PATH=/toolsx/bin:$PATH
 	CFLAGS="$CFLAGS -fdata-sections -ffunction-sections -I${CLFS_DIR}/usr/include" \
 	LDFLAGS="$LDFLAGS -L${CLFS_DIR}/usr/lib" \
 	./configure --prefix=/usr       \
@@ -34,6 +35,6 @@ pkgmain() {
 read -p "Press [Enter] key to contunue"
 	make DESTDIR=${PKG} BUILDARCH=${CLFS_HOST} HOSTARCH=${CLFS_TARGET} BLDSHARED="${CLFS_TARGET}-gcc -shared" CROSS_COMPILE=${CLFS_TARGET}- CROSS_COMPILE_TARGET=yes HOSTPYTHON=${TOOLCHAIN_DIR}/bin/python HOSTPGEN=${TOOLCHAIN_DIR}/bin/pgen install
 
-	#LD_LIBRARY_PATH="${TOOLCHAIN_DIR}/lib:/tools/${CLFS_HOST}/lib64"
+	LD_LIBRARY_PATH="${TOOLCHAIN_DIR}/lib:/tools/${CLFS_HOST}/lib64"
 }
 
