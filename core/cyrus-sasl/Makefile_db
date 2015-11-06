@@ -251,10 +251,10 @@ AUTOMAKE = ${SHELL} /Pi/core/cyrus-sasl/work/src/cyrus-sasl-2.1.26/config/missin
 AWK = gawk
 CC = arm-unknown-linux-gnueabi-gcc 
 CCDEPMODE = depmode=gcc3
-CFLAGS = -Wall -W  -O2 -march=armv6j -mtune=arm1176jzf-s -mfpu=vfp		       -mfloat-abi=hard -Wno-error -I/mnt/diskb/Pi/clfs/usr/include -L/mnt/diskb/Pi/clfs/usr/lib -ldb
+CFLAGS = -Wall -W  -O2 -march=armv6j -mtune=arm1176jzf-s -mfpu=vfp		       -mfloat-abi=hard -Wno-error -I/Pi/clfs/usr/include -L/Pi/clfs/usr/lib -ldb
 CMU_LIB_SUBDIR = lib
 CPP = arm-unknown-linux-gnueabi-gcc  -E
-CPPFLAGS =  -I/mnt/diskb/Pi/clfs/usr/include -I/mnt/diskb/Pi/clfs/usr/include -L/mnt/diskb/Pi/clfs/usr/lib -ldb  -DOBSOLETE_CRAM_ATTR=1
+CPPFLAGS =  -I/Pi/clfs/usr/include -I/Pi/clfs/usr/include -L/Pi/clfs/usr/lib -ldb  -DOBSOLETE_CRAM_ATTR=1
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
@@ -287,7 +287,7 @@ JAVAH = true
 JAVAROOT = 
 JAVA_INCLUDES = 
 LD = arm-unknown-linux-gnueabi-ld 
-LDFLAGS = -L/toolsx/arm-unknown-linux-gnueabi/lib -L/mnt/diskb/Pi/clfs/usr/lib -L/mnt/diskb/Pi/clfs/opt/vc/lib -L/mnt/diskb/Pi/clfs/usr/lib -ldb
+LDFLAGS = -L/toolsx/arm-unknown-linux-gnueabi/lib -L/Pi/clfs/usr/lib -L/Pi/clfs/opt/vc/lib -L/Pi/clfs/usr/lib -ldb
 LIBOBJS = 
 LIBS = -lresolv  
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
