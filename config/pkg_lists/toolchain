@@ -16,6 +16,7 @@ toolchain/gzip  \
 toolchain/m4  \
 toolchain/make  \
 toolchain/patch  \
+toolchain/perl  \
 toolchain/sed  \
 toolchain/tar  \
 toolchain/texinfo  \
@@ -51,5 +52,5 @@ toolchain/readline  \
 toolchain/pcre  \
 toolchain/swig  \
 toolchain/tinyxml \
-toolchain/bc  \
-toolchain/xbmc"
+toolchain/bc \
+toolchain/cyrus-sasl"
