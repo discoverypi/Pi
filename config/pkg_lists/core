@@ -36,6 +36,7 @@ core/iputils   \
 core/kbd   \
 core/less   \
 core/make   \
+core/zlib   \
 core/module-init-tools   \
 core/patch   \
 core/psmisc   \
@@ -86,7 +87,6 @@ core/esound   \
 core/libtheora   \
 core/alsa-plugins   \
 core/icu-55_1   \
-core/zlib   \
 core/boost   \
 core/pcre   \
 core/dbus   \
@@ -153,7 +153,6 @@ core/libarchive   \
 core/libcec-2.2.0 \
 core/libmicrohttpd \
 core/xbmc   \
-core/dcadec   \
 core/libtirpc  \
 core/cifs-utils  \
 core/nfs-utils  \
