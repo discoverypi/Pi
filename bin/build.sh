@@ -349,7 +349,7 @@ main() {
 
 
 TOOLS_BASEDIR=$(dirname $(readlink -e $0))
-PKGMK_BASEDIR=$(dirname ${TOOLS_BASEDIR})
+PKGMK_BASEDIR="/Pi"
 
 #Important files
 PKGMK_COMMONCONF="${PKGMK_BASEDIR}/config/common.conf"

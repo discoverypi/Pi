@@ -27,4 +27,6 @@ pkgmain() {
 	touch ${PKG}/var/log/wtmp
 	chmod 644 ${PKG}/var/run/utmp
 	chmod 644 ${PKG}/var/log/wtmp
+	cp -r ${TOOLCHAIN_DIR}/${CLFS_TARGET}/lib ${PKG}/usr/lib/${CLFS_TARGET}
+        cp -r ${TOOLCHAIN_DIR}/${CLFS_TARGET}/include ${PKG}/usr/include/${CLFS_TARGET}
 }

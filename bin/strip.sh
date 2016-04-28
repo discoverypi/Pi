@@ -29,7 +29,7 @@ main() {
 	for f in $(find ${CLFS_DIR} -type f -executable); do
 		${FILEPROG} ${f} | grep -i "not stripped" >& /dev/null
 		if [ ${?} -eq 0 ]; then
-			${STRIP} --strip-debug ${f}
+			${STRIP} --strip-all ${f}
 		fi
 	done
 }
