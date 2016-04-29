@@ -78,7 +78,7 @@ CMAKE_C_FLAGS_RELEASE:STRING=
 CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=
 
 //Flags used by the linker.
-CMAKE_EXE_LINKER_FLAGS:STRING= -L/Pi/clfs/usr/lib/arm-unknown-linux-gnueabi -L/Pi/clfs/usr/lib -L/Pi/clfs/opt/vc/lib
+CMAKE_EXE_LINKER_FLAGS:STRING= -L/toolsx/arm-unknown-linux-gnueabi/lib -L/Pi/clfs/usr/lib -L/Pi/clfs/opt/vc/lib
 
 //Flags used by the linker during debug builds.
 CMAKE_EXE_LINKER_FLAGS_DEBUG:STRING=
@@ -105,7 +105,7 @@ CMAKE_LINKER:FILEPATH=/usr/bin/ld
 CMAKE_MAKE_PROGRAM:FILEPATH=/usr/bin/gmake
 
 //Flags used by the linker during the creation of modules.
-CMAKE_MODULE_LINKER_FLAGS:STRING= -L/Pi/clfs/usr/lib/arm-unknown-linux-gnueabi -L/Pi/clfs/usr/lib -L/Pi/clfs/opt/vc/lib
+CMAKE_MODULE_LINKER_FLAGS:STRING= -L/toolsx/arm-unknown-linux-gnueabi/lib -L/Pi/clfs/usr/lib -L/Pi/clfs/opt/vc/lib
 
 //Flags used by the linker during debug builds.
 CMAKE_MODULE_LINKER_FLAGS_DEBUG:STRING=
@@ -135,7 +135,7 @@ CMAKE_PROJECT_NAME:STATIC=taglib
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
 
 //Flags used by the linker during the creation of dll's.
-CMAKE_SHARED_LINKER_FLAGS:STRING= -L/Pi/clfs/us/lib/arm-unknown-linux-gnueabi -L/Pi/clfs/usr/lib -L/Pi/clfs/opt/vc/lib
+CMAKE_SHARED_LINKER_FLAGS:STRING= -L/toolsx/arm-unknown-linux-gnueabi/lib -L/Pi/clfs/usr/lib -L/Pi/clfs/opt/vc/lib
 
 //Flags used by the linker during debug builds.
 CMAKE_SHARED_LINKER_FLAGS_DEBUG:STRING=
