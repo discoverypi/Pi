@@ -29,15 +29,27 @@ pkgmain() {
 
 	cd $GCC_VERSION
         cd ..
-	wget -nc http://ftp.gnu.org/gnu/binutils/$BINUTILS_VERSION.tar.gz
-	wget -nc https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.19.tar.xz
-        wget -nc https://ftp.gnu.org/gnu/glibc/$GLIBC_VERSION.tar.xz
-        wget -nc https://ftp.gnu.org/gnu/mpfr/$MPFR_VERSION.tar.xz
-	wget -nc https://ftp.gnu.org/gnu/gmp/$GMP_VERSION.tar.xz
-	wget -nc https://ftp.gnu.org/gnu/mpc/$MPC_VERSION.tar.gz
-	wget -nc ftp://gcc.gnu.org/pub/gcc/infrastructure/$ISL_VERSION.tar.bz2
-	wget -nc ftp://gcc.gnu.org/pub/gcc/infrastructure/$CLOOG_VERSION.tar.gz
-	wget -nc https://ftp.gnu.org/gnu/glibc/glibc-ports-2.13.tar.gz
+	if [ -d /Pi/hostsrc ]; then
+		cp /Pi/hostsrc/$BINUTILS_VERSION.tar.gz .
+		cp /Pi/hostsrc/linux-3.19.tar.xz .
+		cp /Pi/hostsrc/$GLIBC_VERSION.tar.xz .
+		cp /Pi/hostsrc/$MPFR_VERSION.tar.xz .
+		cp /Pi/hostsrc/$GMP_VERSION.tar.xz .
+		cp /Pi/hostsrc/$MPC_VERSION.tar.gz .
+		cp /Pi/hostsrc/$ISL_VERSION.tar.bz2 .
+		cp /Pi/hostsrc/$CLOOG_VERSION.tar.gz .
+		cp /Pi/hostsrc/glibc-ports-2.13.tar.gz .
+	else
+		wget -nc http://ftp.gnu.org/gnu/binutils/$BINUTILS_VERSION.tar.gz
+		wget -nc https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.19.tar.xz
+        	wget -nc https://ftp.gnu.org/gnu/glibc/$GLIBC_VERSION.tar.xz
+        	wget -nc https://ftp.gnu.org/gnu/mpfr/$MPFR_VERSION.tar.xz
+		wget -nc https://ftp.gnu.org/gnu/gmp/$GMP_VERSION.tar.xz
+		wget -nc https://ftp.gnu.org/gnu/mpc/$MPC_VERSION.tar.gz
+		wget -nc ftp://gcc.gnu.org/pub/gcc/infrastructure/$ISL_VERSION.tar.bz2
+		wget -nc ftp://gcc.gnu.org/pub/gcc/infrastructure/$CLOOG_VERSION.tar.gz
+		wget -nc https://ftp.gnu.org/gnu/glibc/glibc-ports-2.13.tar.gz
+	fi
 	#mv rpi-4.0.y rpi-4.0.y.tar.gz
 	#cp ../../*.tar.* .
 	#rm gcc-4.9.2-host-pkg.tar.bz2
