@@ -5,6 +5,7 @@
 
 NAME=libcec
 VERSION=2.2.0-repack
+NO_DELETE=1
 
 
 DEPENDS=""
@@ -14,13 +15,13 @@ SOURCES="https://github.com/Pulse-Eight/libcec/archive/libcec-2.2.0-repack.tar.g
 pkgmain() {
 	tar -xzf ../../libcec-libcec-2.2.0.tar.gz
 	cd libcec-libcec-2.2.0
+	cp ../../../RPiCECAdapterCommunication.cpp src/lib/adapter/RPi/RPiCECAdapterCommunication.cpp
+	cp ../../../main.cpp src/testclient/main.cpp
 	./bootstrap
-
 	./configure --build=${CLFS_HOST} --host=${CLFS_TARGET}		\
 		--prefix=/usr 						\
 		--with-rpi-include-path=${CLFS_DIR}/opt/vc/include     \
 		--with-rpi-lib-path=${CLFS_DIR}/opt/vc/lib  --enable-rpi
-
 	make -j${NR_JOBS}
 	make DESTDIR=${PKG} install
 
