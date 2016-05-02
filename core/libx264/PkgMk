@@ -12,7 +12,7 @@ SOURCES="http://ftp.gnu.org/gnu/wget/wget-1.16.3.tar.xz"
 
 
 pkgmain() {
-	git clone git://git.videolan.org/x264
+	tar -zxf ../../x264.tar.gz
 	cd x264
 	#cp ../../../configure .
 

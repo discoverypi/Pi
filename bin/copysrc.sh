@@ -108,7 +108,7 @@ cp /Pi/src/gnutls-3.2.12.tar.xz	/Pi/core/gnutls/gnutls-3.2.12.tar.xz
 cp /Pi/src/libxml2-2.9.2.tar.bz2	/Pi/core/libxml2/libxml2-2.9.2.tar.bz2
 cp /Pi/src/iana-etc-2.30.tar.bz2	/Pi/core/iana-etc/iana-etc-2.30.tar.bz2
 cp /Pi/src/sudo-1.8.14p3.tar.gz	/Pi/core/sudo/sudo-1.8.14p3.tar.gz
-cp /Pi/src/wget-1.16.3.tar.xz	/Pi/core/libx264/wget-1.16.3.tar.xz
+cp /Pi/src/x264.tar.gz	/Pi/core/libx264/x264.tar.gz
 cp /Pi/src/curl-7.35.0.tar.gz	/Pi/core/curl/curl-7.35.0.tar.gz
 cp /Pi/src/openssl-1.0.1g.tar.gz	/Pi/core/openssl/openssl-1.0.1g.tar.gz
 cp /Pi/src/nettle-2.7.tar.gz	/Pi/core/libnettle/nettle-2.7.tar.gz
