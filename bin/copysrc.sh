@@ -16,7 +16,7 @@ cp /Pi/src/db-6.1.23.tar.bz2	/Pi/core/db/db-6.1.23.tar.bz2
 cp /Pi/src/texinfo-5.1.tar.xz	/Pi/core/texinfo/texinfo-5.1.tar.xz
 cp /Pi/src/libxslt-1.1.28.tar.bz2	/Pi/core/libxslt/libxslt-1.1.28.tar.bz2
 cp /Pi/src/ntp-4.2.6p5.tar.gz	/Pi/core/ntpdate/ntp-4.2.6p5.tar.gz
-cp /Pi/src/master.tar.gz	/Pi/core/firmware/master.tar.gz
+cp /Pi/src/firmware.tar.gz	/Pi/core/firmware/master.tar.gz
 cp /Pi/src/tinyxml_2_6_2.tar.gz	/Pi/core/tinyxml/tinyxml_2_6_2.tar.gz
 cp /Pi/src/ncurses-5.9.tar.gz	/Pi/core/ncurses/ncurses-5.9.tar.gz
 cp /Pi/src/libxcb-1.11.tar.bz2	/Pi/core/libxcb/libxcb-1.11.tar.bz2
