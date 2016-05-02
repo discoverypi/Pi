@@ -5,6 +5,7 @@
 
 NAME=linux-rpi
 VERSION=4.0.y
+NO_DELETE=1
 
 
 DEPENDS=""
@@ -18,10 +19,15 @@ pkgmain() {
 	make -j${NR_JOBS} ARCH=arm CROSS_COMPILE=${CLFS_TARGET}-
 	make -j${NR_JOBS} ARCH=arm CROSS_COMPILE=${CLFS_TARGET}- modules
 	make -j${NR_JOBS} ARCH=arm CROSS_COMPILE=${CLFS_TARGET}- zImage
+	make -j${NR_JOBS} ARCH=arm CROSS_COMPILE=${CLFS_TARGET}- dtbs
 
 	make ARCH=arm CROSS_COMPILE=${CLFS_TARGET}- INSTALL_MOD_PATH=${PKG} \
 		DEPMOD=${TOOLCHAIN_DIR}/sbin/depmod modules_install
 	mkdir -p ${PKG}/boot
+	mkdir -p ${PKG}/boot/overlays
 
-	cp arch/arm/boot/Image ${PKG}/boot/kernel.img
+	cp arch/arm/boot/zImage ${PKG}/boot/kernel.img
+	cp arch/arm/boot/dts/*.dtb ${PKG}/boot/.
+	cp arch/arm/boot/dts/overlays/*.dtb* ${PKG}/boot/overlays/.
+	cp arch/arm/boot/dts/overlays/README ${PKG}/boot/overlays/.
 }
