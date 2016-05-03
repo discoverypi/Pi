@@ -38,7 +38,7 @@ cp /Pi/src/libXmu-1.1.2.tar.bz2	/Pi/core/libXmu/libXmu-1.1.2.tar.bz2
 cp /Pi/src/make-3.82.tar.gz	/Pi/core/make/make-3.82.tar.gz
 cp /Pi/src/libmicrohttpd-0.9.45.tar.gz	/Pi/core/libmicrohttpd/libmicrohttpd-0.9.45.tar.gz
 cp /Pi/src/iproute2-4.1.1.tar.gz	/Pi/core/iproute2/iproute2-4.1.1.tar.gz
-cp /Pi/src/rpi-4.0.y.tar.gz	/Pi/core/linux-rpi/rpi-4.0.y.tar.gz
+cp /Pi/src/rpi-4.4.y.tar.gz	/Pi/core/linux-rpi/rpi-4.4.y.tar.gz
 cp /Pi/src/man-pages-3.63.tar.gz	/Pi/core/man-pages/man-pages-3.63.tar.gz
 cp /Pi/src/man-pages-3.63.tar.gz.partial	/Pi/core/man-pages/man-pages-3.63.tar.gz.partial
 cp /Pi/src/xmlto-0.0.26.tar.bz2	/Pi/core/xmlto/xmlto-0.0.26.tar.bz2
@@ -63,7 +63,7 @@ cp /Pi/src/inputproto-2.3.1.tar.bz2	/Pi/core/inputproto/inputproto-2.3.1.tar.bz2
 cp /Pi/src/libevent-2.0.21-stable.tar.gz	/Pi/core/libevent/libevent-2.0.21-stable.tar.gz
 cp /Pi/src/expat-2.1.0.tar.gz	/Pi/core/expat/expat-2.1.0.tar.gz
 cp /Pi/src/less-451.tar.gz	/Pi/core/less/less-451.tar.gz
-cp /Pi/src/rpi-4.0.y.tar.gz	/Pi/core/linux-rpi-headers/rpi-4.0.y.tar.gz
+cp /Pi/src/rpi-4.4.y.tar.gz	/Pi/core/linux-rpi-headers/rpi-4.4.y.tar.gz
 cp /Pi/src/gmp-5.0.5.tar.xz	/Pi/core/gmp/gmp-5.0.5.tar.xz
 cp /Pi/src/gdb-7.8.2.tar.gz	/Pi/core/gdb/gdb-7.8.2.tar.gz
 cp /Pi/src/libXext-1.3.3.tar.bz2	/Pi/core/libXext/libXext-1.3.3.tar.bz2

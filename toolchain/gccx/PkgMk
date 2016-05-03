@@ -12,7 +12,7 @@ SOURCES="https://ftp.gnu.org/gnu/gcc/gcc-4.9.2/gcc-4.9.2.tar.gz"
 pkgmain() {
 	export PATH=${PKG}/bin:${PATH}
 	BINUTILS_VERSION=binutils-2.22
-        LINUX_VERSION=linux-rpi-4.0.y
+        LINUX_VERSION=linux-rpi-4.4.y
         GLIBC_VERSION=glibc-2.13
         MPFR_VERSION=mpfr-3.1.2
         GMP_VERSION=gmp-6.0.0a
@@ -30,7 +30,7 @@ pkgmain() {
         cd ..
 	if [ -d /Pi/hostsrc ]; then
 		cp /Pi/hostsrc/$BINUTILS_VERSION.tar.gz .
-                cp /Pi/hostsrc/rpi-4.0.y.tar.gz .
+                cp /Pi/hostsrc/rpi-4.4.y.tar.gz .
                 cp /Pi/hostsrc/$GLIBC_VERSION.tar.xz .
                 cp /Pi/hostsrc/$MPFR_VERSION.tar.xz .
                 cp /Pi/hostsrc/$GMP_VERSION.tar.xz .
@@ -40,7 +40,7 @@ pkgmain() {
                 cp /Pi/hostsrc/glibc-ports-2.13.tar.gz .
         else
 		wget -nc http://ftp.gnu.org/gnu/binutils/$BINUTILS_VERSION.tar.gz
-		wget -nc https://github.com/raspberrypi/linux/archive/rpi-4.0.y.tar.gz
+		wget -nc https://github.com/raspberrypi/linux/archive/rpi-4.4.y.tar.gz
         	wget -nc https://ftp.gnu.org/gnu/glibc/$GLIBC_VERSION.tar.xz
         	wget -nc https://ftp.gnu.org/gnu/mpfr/$MPFR_VERSION.tar.xz
 		wget -nc https://ftp.gnu.org/gnu/gmp/$GMP_VERSION.tar.xz
@@ -48,7 +48,7 @@ pkgmain() {
 		wget -nc ftp://gcc.gnu.org/pub/gcc/infrastructure/$ISL_VERSION.tar.bz2
 		wget -nc ftp://gcc.gnu.org/pub/gcc/infrastructure/$CLOOG_VERSION.tar.gz
 		wget -nc https://ftp.gnu.org/gnu/glibc/glibc-ports-2.13.tar.gz
-		mv rpi-4.0.y rpi-4.0.y.tar.gz
+		mv rpi-4.4.y rpi-4.4.y.tar.gz
 	fi
 	#cp ../../*.tar.* .
 	#rm gcc-4.9.2-host-pkg.tar.bz2
