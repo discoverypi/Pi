@@ -67,7 +67,7 @@ fi
 
 # Update shared library links
 # No ldconfig with musl
-#/sbin/ldconfig
+/sbin/ldconfig
 
 # Configure host name
 if [ "$HOSTNAME" ]; then
@@ -105,5 +105,10 @@ fi
 
 # Save boot messages
 /bin/dmesg > /var/log/boot
+
+if [ -f /.firstboot ]; then
+	libtool --finish /usr/lib
+	rm -rf /.firstboot
+fi
 
 # End of file
