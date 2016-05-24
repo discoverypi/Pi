@@ -67,6 +67,7 @@ core/weechat   \
 core/expat   \
 core/go   \
 core/net   \
+core/sqlite-autoconf   \
 core/Python   \
 core/alsa-lib   \
 core/alsa-utils   \
@@ -103,7 +104,6 @@ core/libxml2   \
 core/libxslt   \
 core/libpthread-stubs   \
 core/libSM   \
-core/sqlite-autoconf   \
 core/libXau   \
 core/xcb-proto   \
 core/libXdmcp   \
