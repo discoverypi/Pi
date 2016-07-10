@@ -9,15 +9,17 @@ HOST_PKG=1
 
 DEPENDS=""
 SOURCES="http://ftp.gnu.org/gnu/bash/bash-4.3.30.tar.gz"
-#SOURCES="http://www.linuxfromscratch.org/patches/lfs/7.7/bash-4.3.30-upstream_fixes-1.patch"
+PATCHES="bash-4.3.30-upstream_fixes-1.patch"
 
 
 pkgmain() {
 	cd ${NAME}-${VERSION}
+	process_patches
 
 
 	PKG_CONFIG= ./configure --prefix=${TOOLCHAIN_DIR} \
-		--without-bash-malloc
+		--without-bash-malloc \
+		--with-installed-readline
 	make -j${NR_JOBS}
 	make DESTDIR=${PKG} install
 }

@@ -50,6 +50,8 @@ core/findutils   \
 core/iproute2   \
 core/strace   \
 core/gdb   \
+core/db   \
+core/pam \
 core/openssl   \
 core/openssh   \
 core/stunnel   \
@@ -93,7 +95,6 @@ core/pcre   \
 core/dbus   \
 core/firmware   \
 core/omxplayer   \
-core/db   \
 core/pkg-config   \
 core/xproto   \
 core/xtrans   \

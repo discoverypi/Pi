@@ -24,6 +24,7 @@ pkgmain() {
 
 	./configure --prefix=/usr --build=${CLFS_HOST}		\
 		--host=${CLFS_TARGET} --sysconfdir=/etc/ssh	\
+		--with-pam \
 		--without-stackprotect	--disable-strip
 
 	make -j${NR_JOBS}
