@@ -1,4 +1,3 @@
-find usr bin sbin lib -type f -exec /toolsx/bin/arm-unknown-linux-gnueabi-strip --strip-all {} ';'
 mv /Pi/clfs/toolsx /Pi/toolsx
 mv /Pi/clfs/tools /Pi/tools
 ln -s usr /Pi/clfs/toolsx
