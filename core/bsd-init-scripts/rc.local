@@ -33,6 +33,8 @@ cd /Pi/core/httpd
 install.sh httpd-2.4.23-cross-pkg.tar.bz2
 cd /Pi/core/dcron
 install.sh dcron-4.5-cross-pkg.tar.bz2
+cd /Pi/core/mailx
+install.sh heirloom-mailx-12.5-cross-pkg.tar.bz2
 cd /Pi/core/procmail
 build.sh
 cd /Pi/core/sendmail
