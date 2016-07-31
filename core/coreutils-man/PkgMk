@@ -14,7 +14,7 @@ SOURCES="https://distfiles.gentoo.org/distfiles/coreutils-${VERSION}-man.tar.xz"
 pkgmain() {
 	cd coreutils-${VERSION}
 
-	install -dv -m 0755 ${PKG}/usr/share/man/
-	cp -R man ${PKG}/usr/share/man/man1
+	sudo install -dv -m 0755 ${PKG}/usr/share/man/
+	sudo cp -R man ${PKG}/usr/share/man/man1
 }
 

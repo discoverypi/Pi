@@ -17,15 +17,15 @@ pkgmain() {
 	cd ${NAME}-${VERSION}
 	copy_files
 
-	mkdir ${PKG}/etc
-	install -v -m755 rc ${PKG}/etc/rc
-	mkdir -m755 ${PKG}/etc/rc.d
-	install -v -m755 rc.modules ${PKG}/etc/rc.modules
-	install -v -m755 rc.multi ${PKG}/etc/rc.multi
-	install -v -m755 rc.shutdown ${PKG}/etc/rc.shutdown
-	install -v -m755 rc.single ${PKG}/etc/rc.single
-	install -v -m644 rc.conf ${PKG}/etc/rc.conf
-	install -v -m755 rc.local ${PKG}/etc/rc.local
-	install -v -m644 sysctl.conf ${PKG}/etc/sysctl.conf
-	ln -sv /proc/mounts ${PKG}/etc/mtab
+	sudo mkdir ${PKG}/etc
+	sudo install -v -m755 rc ${PKG}/etc/rc
+	sudo mkdir -m755 ${PKG}/etc/rc.d
+	sudo install -v -m755 rc.modules ${PKG}/etc/rc.modules
+	sudo install -v -m755 rc.multi ${PKG}/etc/rc.multi
+	sudo install -v -m755 rc.shutdown ${PKG}/etc/rc.shutdown
+	sudo install -v -m755 rc.single ${PKG}/etc/rc.single
+	sudo install -v -m644 rc.conf ${PKG}/etc/rc.conf
+	sudo install -v -m755 rc.local ${PKG}/etc/rc.local
+	sudo install -v -m644 sysctl.conf ${PKG}/etc/sysctl.conf
+	sudo ln -sv /proc/mounts ${PKG}/etc/mtab
 }

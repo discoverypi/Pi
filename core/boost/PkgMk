@@ -19,7 +19,7 @@ pkgmain() {
 	
 	./bootstrap.sh --prefix=/Pi/clfs/usr 
 	cp ../../../project-config.jam .
-	./bjam install toolset=gcc-arm target-os=linux architecture=arm abi=aapcs -j6 -d2 --prefix=${PKG}/usr -o boost.log cxxflags="-I/Pi/core/icu/work/pkg/usr/include -I/Pi/core/zlib/work/pkg/usr/include -I/Pi/core/bzip2/work/pkg/usr/include -I${CLFS_DIR}/usr/include/python2.7" 
+	sudo PATH=$PATH ./bjam install toolset=gcc-arm target-os=linux architecture=arm abi=aapcs -j6 -d2 --prefix=${PKG}/usr -o boost.log cxxflags="-I/Pi/core/icu/work/pkg/usr/include -I/Pi/core/zlib/work/pkg/usr/include -I/Pi/core/bzip2/work/pkg/usr/include -I${CLFS_DIR}/usr/include/python2.7" 
 
 
 }

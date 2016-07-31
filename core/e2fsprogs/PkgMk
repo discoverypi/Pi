@@ -24,13 +24,13 @@ pkgmain() {
 		--disable-uuidd
 
 	make -j${NR_JOBS}
-	make DESTDIR=${PKG} install
-	make DESTDIR=${PKG} install-libs
+	sudo ABI=$ABI ARCH=$ARCH MODE=$MODE FPU=$FPU FLOAT=$FLOAT TUNE=$TUNE CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CC="$CC" CXX="$CXX" AR="$AR" AS="$AS" RANLIB="$RANLIB" LD="$LD" STRIP="$STRIP" OBJDUMP="$OBJDUMP" LDFLAGS="$LDFLAGS" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PATH=$PATH make DESTDIR=${PKG} install
+	sudo ABI=$ABI ARCH=$ARCH MODE=$MODE FPU=$FPU FLOAT=$FLOAT TUNE=$TUNE CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CC="$CC" CXX="$CXX" AR="$AR" AS="$AS" RANLIB="$RANLIB" LD="$LD" STRIP="$STRIP" OBJDUMP="$OBJDUMP" LDFLAGS="$LDFLAGS" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PATH=$PATH make DESTDIR=${PKG} install-libs
 
 
-	rm -v ${PKG}/usr/lib/lib{com_err,e2p,ext2fs,ss}.so
-	ln -sv ../../lib/libcom_err.so.2 ${PKG}/usr/lib/libcom_err.so
-	ln -sv ../../lib/libe2p.so.2 ${PKG}/usr/lib/libe2p.so
-	ln -sv ../../lib/libext2fs.so.2 ${PKG}/usr/lib/libext2fs.so
-	ln -sv ../../lib/libss.so.2 ${PKG}/usr/lib/libss.so
+	sudo rm -v ${PKG}/usr/lib/lib{com_err,e2p,ext2fs,ss}.so
+	sudo ln -sv ../../lib/libcom_err.so.2 ${PKG}/usr/lib/libcom_err.so
+	sudo ln -sv ../../lib/libe2p.so.2 ${PKG}/usr/lib/libe2p.so
+	sudo ln -sv ../../lib/libext2fs.so.2 ${PKG}/usr/lib/libext2fs.so
+	sudo ln -sv ../../lib/libss.so.2 ${PKG}/usr/lib/libss.so
 }

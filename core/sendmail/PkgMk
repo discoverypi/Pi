@@ -35,32 +35,32 @@ define(`confMANDOC',`')
 EOF
 	sed -i 's|/usr/man/man|/usr/share/man/man|' \
     devtools/OS/Linux 
-	install -v -d -m755 ${PKG}/usr/bin
-	install -v -d -m755 ${PKG}/usr/sbin
-	install -v -d -m755 ${PKG}/usr/share/man/man1
-	install -v -d -m755 ${PKG}/usr/share/man/man5
-	install -v -d -m755 ${PKG}/usr/share/man/man8
-	install -v -d -m755 ${PKG}/etc/mail
+	sudo install -v -d -m755 ${PKG}/usr/bin
+	sudo install -v -d -m755 ${PKG}/usr/sbin
+	sudo install -v -d -m755 ${PKG}/usr/share/man/man1
+	sudo install -v -d -m755 ${PKG}/usr/share/man/man5
+	sudo install -v -d -m755 ${PKG}/usr/share/man/man8
+	sudo install -v -d -m755 ${PKG}/etc/mail
 
 	cd sendmail
-	sh Build DESTDIR=${PKG}
-	sh Build DESTDIR=${PKG} install-sendmail
+	sudo sh Build DESTDIR=${PKG}
+	sudo sh Build DESTDIR=${PKG} install-sendmail
 	cd ../cf/cf
 	cp generic-linux.mc sendmail.mc
-	sh Build DESTDIR=${PKG} sendmail.cf
+	sudo sh Build DESTDIR=${PKG} sendmail.cf
 
-install -v -d -m755 ${PKG}/etc/mail
-sh Build DESTDIR=${PKG} install-cf
+sudo install -v -d -m755 ${PKG}/etc/mail
+sudo sh Build DESTDIR=${PKG} install-cf
 cd ../../
-sh Build DESTDIR=${PKG} install
-install -v -m644 cf/cf/{submit,sendmail}.mc ${PKG}/etc/mail
-cp -v -R cf/* ${PKG}/etc/mail
-install -v -m755 -d ${PKG}/usr/share/doc/sendmail-8.15.2/{cf,sendmail}
-install -v -m644 CACerts FAQ KNOWNBUGS LICENSE PGPKEYS README RELEASE_NOTES \
+sudo sh Build DESTDIR=${PKG} install
+sudo install -v -m644 cf/cf/{submit,sendmail}.mc ${PKG}/etc/mail
+sudo cp -v -R cf/* ${PKG}/etc/mail
+sudo install -v -m755 -d ${PKG}/usr/share/doc/sendmail-8.15.2/{cf,sendmail}
+sudo install -v -m644 CACerts FAQ KNOWNBUGS LICENSE PGPKEYS README RELEASE_NOTES \
         ${PKG}/usr/share/doc/sendmail-8.15.2
-install -v -m644 sendmail/{README,SECURITY,TRACEFLAGS,TUNING} \
+sudo install -v -m644 sendmail/{README,SECURITY,TRACEFLAGS,TUNING} \
         ${PKG}/usr/share/doc/sendmail-8.15.2/sendmail
-install -v -m644 cf/README ${PKG}/usr/share/doc/sendmail-8.15.2/cf
+sudo install -v -m644 cf/README ${PKG}/usr/share/doc/sendmail-8.15.2/cf
 
 
 }

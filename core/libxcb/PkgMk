@@ -25,7 +25,7 @@ XCBPROTO_XCBPYTHONDIR=${CLFS_DIR}/usr/lib/python2.7/site-packages pyexecdir=${CL
 
 	make -j${NR_JOBS} XCBPROTO_XCBINCLUDEDIR=${CLFS_DIR}/usr/share/xcb
 XCBPROTO_XCBPYTHONDIR=${CLFS_DIR}/usr/lib/python2.7/site-packages pyexecdir=${CLFS_DIR}/usr/lib/python2.7/site-packages pythondir=${CLFS_DIR}/usr/lib/python2.7/site-packages
-	make DESTDIR=${PKG} install
+	sudo ABI=$ABI ARCH=$ARCH MODE=$MODE FPU=$FPU FLOAT=$FLOAT TUNE=$TUNE CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CC="$CC" CXX="$CXX" AR="$AR" AS="$AS" RANLIB="$RANLIB" LD="$LD" STRIP="$STRIP" OBJDUMP="$OBJDUMP" LDFLAGS="$LDFLAGS" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PATH=$PATH make DESTDIR=${PKG} install
 	rm ${TOOLCHAIN_DIR}/lib/python2.7/site-packages
 	mv ${TOOLCHAIN_DIR}/lib/python2.7/orig.site-packages ${TOOLCHAIN_DIR}/lib/python2.7/site-packages
 

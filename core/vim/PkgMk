@@ -23,9 +23,9 @@ pkgmain() {
 		--with-tlib=ncurses
 
 	make -j${NR_JOBS}
-	make DESTDIR=${PKG} install
+	sudo ABI=$ABI ARCH=$ARCH MODE=$MODE FPU=$FPU FLOAT=$FLOAT TUNE=$TUNE CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CC="$CC" CXX="$CXX" AR="$AR" AS="$AS" RANLIB="$RANLIB" LD="$LD" STRIP="$STRIP" OBJDUMP="$OBJDUMP" LDFLAGS="$LDFLAGS" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PATH=$PATH make DESTDIR=${PKG} install
 
-	mkdir -p ${PKG}/usr/share/doc
-	ln -sfv vim ${PKG}/usr/bin/vi
-	ln -sfnv ../vim/vim73/doc ${PKG}/usr/share/doc/vim-7.3
+	sudo mkdir -p ${PKG}/usr/share/doc
+	sudo ln -sfv vim ${PKG}/usr/bin/vi
+	sudo ln -sfnv ../vim/vim73/doc ${PKG}/usr/share/doc/vim-7.3
 }

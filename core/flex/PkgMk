@@ -24,8 +24,8 @@ pkgmain() {
 		--prefix=/usr --cache-file=config.cache
 	make -j${NR_JOBS} CC="${CC} -fPIC" libfl.a
 	make -j${NR_JOBS}
-	make DESTDIR=${PKG} install
+	sudo ABI=$ABI ARCH=$ARCH MODE=$MODE FPU=$FPU FLOAT=$FLOAT TUNE=$TUNE CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CC="$CC" CXX="$CXX" AR="$AR" AS="$AS" RANLIB="$RANLIB" LD="$LD" STRIP="$STRIP" OBJDUMP="$OBJDUMP" LDFLAGS="$LDFLAGS" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PATH=$PATH make DESTDIR=${PKG} install
 
-	ln -sfv libfl.a ${PKG}/usr/lib/libl.a
-	install -m755 lex ${PKG}/usr/bin
+	sudo ln -sfv libfl.a ${PKG}/usr/lib/libl.a
+	sudo install -m755 lex ${PKG}/usr/bin
 }

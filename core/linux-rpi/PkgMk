@@ -21,13 +21,13 @@ pkgmain() {
 	make -j${NR_JOBS} ARCH=arm CROSS_COMPILE=${CLFS_TARGET}- zImage
 	make -j${NR_JOBS} ARCH=arm CROSS_COMPILE=${CLFS_TARGET}- dtbs
 
-	make ARCH=arm CROSS_COMPILE=${CLFS_TARGET}- INSTALL_MOD_PATH=${PKG} \
+	sudo ABI=$ABI ARCH=$ARCH MODE=$MODE FPU=$FPU FLOAT=$FLOAT TUNE=$TUNE CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CC="$CC" CXX="$CXX" AR="$AR" AS="$AS" RANLIB="$RANLIB" LD="$LD" STRIP="$STRIP" OBJDUMP="$OBJDUMP" LDFLAGS="$LDFLAGS" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PATH=$PATH make ARCH=arm CROSS_COMPILE=${CLFS_TARGET}- INSTALL_MOD_PATH=${PKG} \
 		DEPMOD=${TOOLCHAIN_DIR}/sbin/depmod modules_install
-	mkdir -p ${PKG}/boot
-	mkdir -p ${PKG}/boot/overlays
+	sudo mkdir -p ${PKG}/boot
+	sudo mkdir -p ${PKG}/boot/overlays
 
-	cp arch/arm/boot/zImage ${PKG}/boot/kernel.img
-	cp arch/arm/boot/dts/*.dtb ${PKG}/boot/.
-	cp arch/arm/boot/dts/overlays/*.dtb* ${PKG}/boot/overlays/.
-	cp arch/arm/boot/dts/overlays/README ${PKG}/boot/overlays/.
+	sudo cp arch/arm/boot/zImage ${PKG}/boot/kernel.img
+	sudo cp arch/arm/boot/dts/*.dtb ${PKG}/boot/.
+	sudo cp arch/arm/boot/dts/overlays/*.dtb* ${PKG}/boot/overlays/.
+	sudo cp arch/arm/boot/dts/overlays/README ${PKG}/boot/overlays/.
 }

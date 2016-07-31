@@ -51,7 +51,7 @@ check_footprintfile() {
 
 clean_work() {
 	if [ -z "${NO_DELETE}" ]; then
-	   rm -rf ${WORK_DIR}
+	   sudo rm -rf ${WORK_DIR}
 	fi
 }
 
@@ -244,41 +244,41 @@ makepkg() {
 	cd ${PKG}
 
 	# Remove libtool files
-	find . -name "*.la" -delete
+	sudo find . -name "*.la" -delete
 	# Remove GNU info files
 	if [ -d share/info ]; then
-		rm -rf share/info
+		sudo rm -rf share/info
 	fi
 	if [ -d usr/share/info ]; then
-		rm -rf usr/share/info
+		sudo rm -rf usr/share/info
 	fi
 
 	# Remove doc uneeded files
 	if [ -d share/doc ]; then
-		rm -rf share/doc
+		sudo rm -rf share/doc
 	fi
 	if [ -d usr/share/doc ]; then
-		rm -rf usr/share/doc
+		sudo rm -rf usr/share/doc
 	fi
 
 	# Remove gtk-doc more uneeded files
 	if [ -d usr/share/gtk-doc ]; then
-		rm -rf usr/share/gtk-doc
+		sudo rm -rf usr/share/gtk-doc
 	fi
 
 	if [ -d usr/man ]; then
 		if [ ! -d usr/share ]; then
-			mkdir usr/share
+			sudo mkdir usr/share
 		fi
-		mv usr/{,share/}man
+		sudo mv usr/{,share/}man
 	fi
 
 
-	bsdtar -cjf ${PKG_TAR} *
+	sudo bsdtar -cjf ${PKG_TAR} *
 	if [ $? -ne 0 ]; then
 		error "Failed to make package"
 	fi
-	mv  ${PKG_TAR} "${PKG_ROOT}/"
+	sudo mv  ${PKG_TAR} "${PKG_ROOT}/"
 	cd ${PKG_ROOT}
 }
 

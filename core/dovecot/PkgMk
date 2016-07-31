@@ -29,6 +29,6 @@ i_cv_c99_vsnprintf=yes lib_cv_va_copy=yes lib_cv___va_copy=yes \
 lib_cv_va_val_copy=yes  \
 
 	make -j${NR_JOBS}
-	make DESTDIR=${PKG} install
+	sudo ABI=$ABI ARCH=$ARCH MODE=$MODE FPU=$FPU FLOAT=$FLOAT TUNE=$TUNE CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CC="$CC" CXX="$CXX" AR="$AR" AS="$AS" RANLIB="$RANLIB" LD="$LD" STRIP="$STRIP" OBJDUMP="$OBJDUMP" LDFLAGS="$LDFLAGS" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PATH=$PATH make DESTDIR=${PKG} install
 
 }

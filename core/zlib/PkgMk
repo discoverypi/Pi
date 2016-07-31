@@ -18,10 +18,10 @@ pkgmain() {
 	./configure --prefix=/usr --enable-shared
 
 	make -j${NR_JOBS}
-	make DESTDIR=${PKG} install
+	sudo ABI=$ABI ARCH=$ARCH MODE=$MODE FPU=$FPU FLOAT=$FLOAT TUNE=$TUNE CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CC="$CC" CXX="$CXX" AR="$AR" AS="$AS" RANLIB="$RANLIB" LD="$LD" STRIP="$STRIP" OBJDUMP="$OBJDUMP" LDFLAGS="$LDFLAGS" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PATH=$PATH make DESTDIR=${PKG} install
 
-	mkdir ${PKG}/lib/
-	mv -v ${PKG}/usr/lib/libz.so.* ${PKG}/lib/
-	ln -sfv ../../lib/libz.so.1 ${PKG}/usr/lib/libz.so
-	chmod -v 644 ${PKG}/usr/lib/libz.a
+	sudo mkdir ${PKG}/lib/
+	sudo mv -v ${PKG}/usr/lib/libz.so.* ${PKG}/lib/
+	sudo ln -sfv ../../lib/libz.so.1 ${PKG}/usr/lib/libz.so
+	sudo chmod -v 644 ${PKG}/usr/lib/libz.a
 }

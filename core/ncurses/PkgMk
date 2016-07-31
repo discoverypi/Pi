@@ -24,22 +24,25 @@ pkgmain() {
 		--with-build-cc="gcc -D_GNU_SOURCE"
 
 	make -j${NR_JOBS}
-	make DESTDIR=${PKG} install
-
-	mkdir ${PKG}/usr/lib
-	mv -v ${PKG}/lib/lib{panelw,menuw,formw,ncursesw,ncurses++w}.a ${PKG}/usr/lib
-	rm -v ${PKG}/lib/lib{ncursesw,menuw,panelw,formw}.so
-	ln -sfv ../../lib/libncursesw.so.5 ${PKG}/usr/lib/libncursesw.so
-	ln -sfv ../../lib/libmenuw.so.5 ${PKG}/usr/lib/libmenuw.so
-	ln -sfv ../../lib/libpanelw.so.5 ${PKG}/usr/lib/libpanelw.so
-	ln -sfv ../../lib/libformw.so.5 ${PKG}/usr/lib/libformw.so
-	for lib in curses ncurses form panel menu; do
-		echo "INPUT(-l${lib}w)" > ${PKG}/usr/lib/lib${lib}.so
-		ln -sfv lib${lib}w.a ${PKG}/usr/lib/lib${lib}.a
+	sudo ABI=$ABI ARCH=$ARCH MODE=$MODE FPU=$FPU FLOAT=$FLOAT TUNE=$TUNE CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CC="$CC" CXX="$CXX" AR="$AR" AS="$AS" RANLIB="$RANLIB" LD="$LD" STRIP="$STRIP" OBJDUMP="$OBJDUMP" LDFLAGS="$LDFLAGS" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PATH=$PATH make DESTDIR=${PKG} install
+	sudo mkdir ${PKG}/usr/lib
+	sudo ln -sfv ../share/terminfo ${PKG}/usr/lib/terminfo
+	sudo mv -v ${PKG}/lib/lib{panelw,menuw,formw,ncursesw,ncurses++w}.a ${PKG}/usr/lib
+	sudo rm -v ${PKG}/lib/lib{ncursesw,menuw,panelw,formw}.so
+	sudo ln -sfv ../../lib/libncursesw.so.5 ${PKG}/usr/lib/libncursesw.so
+	sudo ln -sfv ../../lib/libmenuw.so.5 ${PKG}/usr/lib/libmenuw.so
+	sudo ln -sfv ../../lib/libpanelw.so.5 ${PKG}/usr/lib/libpanelw.so
+	sudo ln -sfv ../../lib/libformw.so.5 ${PKG}/usr/lib/libformw.so
+	mkdir tmp
+	for lib in curses ncurses form panel menu;  do
+		echo "INPUT(-l${lib}w)" > tmp/lib${lib}.so
 	done
-	ln -sfv libncursesw.so ${PKG}/usr/lib/libcursesw.so
-	ln -sfv libncursesw.a ${PKG}/usr/lib/libcursesw.a
-	ln -sfv libncurses++w.a ${PKG}/usr/lib/libncurses++.a
-	ln -sfv ncursesw5-config ${PKG}/usr/bin/ncurses5-config
-	ln -sfv ../share/terminfo ${PKG}/usr/lib/terminfo
+	sudo cp tmp/* ${PKG}/usr/lib/.
+	for lib in curses ncurses form panel menu;  do
+		sudo ln -sfv lib${lib}w.a ${PKG}/usr/lib/lib${lib}.a
+	done
+	sudo ln -sfv libncursesw.so ${PKG}/usr/lib/libcursesw.so
+	sudo ln -sfv libncursesw.a ${PKG}/usr/lib/libcursesw.a
+	sudo ln -sfv libncurses++w.a ${PKG}/usr/lib/libncurses++.a
+	sudo ln -sfv ncursesw5-config ${PKG}/usr/bin/ncurses5-config
 }

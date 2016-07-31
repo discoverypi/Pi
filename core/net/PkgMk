@@ -17,9 +17,9 @@ pkgmain() {
 	cd ${NAME}-${VERSION}
 	copy_files
 
-	mkdir ${PKG}/etc
-	mkdir ${PKG}/etc/rc.d
-	install -v -m744  resolv.conf.static ${PKG}/etc/.resolv.conf.static
-	install -v -m755  net ${PKG}/etc/rc.d/net
+	sudo mkdir ${PKG}/etc
+	sudo mkdir ${PKG}/etc/rc.d
+	sudo install -v -m744  resolv.conf.static ${PKG}/etc/.resolv.conf.static
+	sudo install -v -m755  net ${PKG}/etc/rc.d/net
 }
 

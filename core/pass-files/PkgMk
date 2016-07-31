@@ -17,7 +17,7 @@ pkgmain() {
 	cd ${NAME}-${VERSION}
 	copy_files
 
-	mkdir ${PKG}/etc
-	install -v -m755 passwd ${PKG}/etc/passwd
-	install -v -m755 group ${PKG}/etc/group
+	sudo mkdir ${PKG}/etc
+	sudo install -v -m755 passwd ${PKG}/etc/passwd
+	sudo install -v -m755 group ${PKG}/etc/group
 }

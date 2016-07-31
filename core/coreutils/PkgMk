@@ -29,20 +29,20 @@ pkgmain() {
 		-e 's/^\##run_help2man/run_help2man/' Makefile.orig > Makefile
 
 	make -j${NR_JOBS}
-	make DESTDIR=${PKG} install
+	sudo ABI=$ABI ARCH=$ARCH MODE=$MODE FPU=$FPU FLOAT=$FLOAT TUNE=$TUNE CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CC="$CC" CXX="$CXX" AR="$AR" AS="$AS" RANLIB="$RANLIB" LD="$LD" STRIP="$STRIP" OBJDUMP="$OBJDUMP" LDFLAGS="$LDFLAGS" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PATH=$PATH make DESTDIR=${PKG} install
 
-	mkdir ${PKG}/bin
-	mkdir ${PKG}/usr/sbin
-	mv -v ${PKG}/usr/bin/{cat,chgrp,chmod,chown,cp,date} ${PKG}/bin
-	mv -v ${PKG}/usr/bin/{dd,df,echo,false,hostname,ln,ls,mkdir} ${PKG}/bin
-	mv -v ${PKG}/usr/bin/{mv,pwd,rm,rmdir,stty,true,uname} ${PKG}/bin
-	mv -v ${PKG}/usr/bin/chroot ${PKG}/usr/sbin
+	sudo mkdir ${PKG}/bin
+	sudo mkdir ${PKG}/usr/sbin
+	sudo mv -v ${PKG}/usr/bin/{cat,chgrp,chmod,chown,cp,date} ${PKG}/bin
+	sudo mv -v ${PKG}/usr/bin/{dd,df,echo,false,hostname,ln,ls,mkdir} ${PKG}/bin
+	sudo mv -v ${PKG}/usr/bin/{mv,pwd,rm,rmdir,stty,true,uname} ${PKG}/bin
+	sudo mv -v ${PKG}/usr/bin/chroot ${PKG}/usr/sbin
 
 	#This is needed by CLFS bootscripts
-	mv -v ${PKG}/usr/bin/{[,basename,head,install,nice} ${PKG}/bin
-	mv -v ${PKG}/usr/bin/{readlink,sleep,sync,test,touch} ${PKG}/bin
-	ln -sfv ../../bin/install ${PKG}/usr/bin
+	sudo mv -v ${PKG}/usr/bin/{[,basename,head,install,nice} ${PKG}/bin
+	sudo mv -v ${PKG}/usr/bin/{readlink,sleep,sync,test,touch} ${PKG}/bin
+	sudo ln -sfv ../../bin/install ${PKG}/usr/bin
 
 	#Remove unecessary man pages
-	rm -rf ${PKG}/usr/share
+	sudo rm -rf ${PKG}/usr/share
 }

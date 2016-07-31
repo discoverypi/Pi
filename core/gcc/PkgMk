@@ -44,11 +44,11 @@ pkgmain() {
 
 	make -j${NR_JOBS}
 	fix_temporary_libtool_files
-	make DESTDIR=${PKG} install
+	sudo ABI=$ABI ARCH=$ARCH MODE=$MODE FPU=$FPU FLOAT=$FLOAT TUNE=$TUNE CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CC="$CC" CXX="$CXX" AR="$AR" AS="$AS" RANLIB="$RANLIB" LD="$LD" STRIP="$STRIP" OBJDUMP="$OBJDUMP" LDFLAGS="$LDFLAGS" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PATH=$PATH make DESTDIR=${PKG} install
 
-	mkdir ${PKG}/lib
-	ln -sfv ../usr/bin/cpp ${PKG}/lib/cpp
-	ln -sfv gcc ${PKG}/usr/bin/cc
-	mv ${PKG}/usr/lib/libgcc_s.so.1 ${PKG}/lib/
-	ln -sfv /lib/libgcc_s.so.1 ${PKG}/usr/lib/libgcc_s.so.1
+	sudo mkdir ${PKG}/lib
+	sudo ln -sfv ../usr/bin/cpp ${PKG}/lib/cpp
+	sudo ln -sfv gcc ${PKG}/usr/bin/cc
+	sudo mv ${PKG}/usr/lib/libgcc_s.so.1 ${PKG}/lib/
+	sudo ln -sfv /lib/libgcc_s.so.1 ${PKG}/usr/lib/libgcc_s.so.1
 }

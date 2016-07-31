@@ -20,13 +20,13 @@ pkgmain() {
 	make -f Makefile-libbz2_so CC="${CC}" AR="${AR}" RANLIB="${RANLIB}"
 	make clean
 	make CC="${CC}" AR="${AR}" RANLIB="${RANLIB}"
-	make PREFIX=${PKG}/usr install
+	sudo ABI=$ABI ARCH=$ARCH MODE=$MODE FPU=$FPU FLOAT=$FLOAT TUNE=$TUNE CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CC="$CC" CXX="$CXX" AR="$AR" AS="$AS" RANLIB="$RANLIB" LD="$LD" STRIP="$STRIP" OBJDUMP="$OBJDUMP" LDFLAGS="$LDFLAGS" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PATH=$PATH make PREFIX=${PKG}/usr install
 
-	mkdir ${PKG}/bin ${PKG}/lib
-	cp -v bzip2-shared ${PKG}/bin/bzip2
-	cp -av libbz2.so* ${PKG}/lib
-	ln -sfv ../../lib/libbz2.so.1.0 ${PKG}/usr/lib/libbz2.so
-	rm -v ${PKG}/usr/bin/{bunzip2,bzcat,bzip2}
-	ln -sfv bzip2 ${PKG}/bin/bunzip2
-	ln -sfv bzip2 ${PKG}/bin/bzcat
+	sudo mkdir ${PKG}/bin ${PKG}/lib
+	sudo cp -v bzip2-shared ${PKG}/bin/bzip2
+	sudo cp -av libbz2.so* ${PKG}/lib
+	sudo ln -sfv ../../lib/libbz2.so.1.0 ${PKG}/usr/lib/libbz2.so
+	sudo rm -v ${PKG}/usr/bin/{bunzip2,bzcat,bzip2}
+	sudo ln -sfv bzip2 ${PKG}/bin/bunzip2
+	sudo ln -sfv bzip2 ${PKG}/bin/bzcat
 }

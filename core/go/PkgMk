@@ -27,20 +27,20 @@ pkgmain() {
 	cd src
 	./make.bash
 
-	install -d -m 755 ${PKG}/usr
-	install -d -m 755 ${PKG}/usr/bin
-	install -d -m 755 ${PKG}/usr/lib
-	install -d -m 755 ${PKG}/usr/lib/go
-	install -d -m 755 ${PKG}/usr/lib/go/pkg
-	install -d -m 755 ${PKG}/usr/lib/go/pkg/tool
-	install -d -m 755 ${PKG}/usr/lib/go/src
+	sudo install -d -m 755 ${PKG}/usr
+	sudo install -d -m 755 ${PKG}/usr/bin
+	sudo install -d -m 755 ${PKG}/usr/lib
+	sudo install -d -m 755 ${PKG}/usr/lib/go
+	sudo install -d -m 755 ${PKG}/usr/lib/go/pkg
+	sudo install -d -m 755 ${PKG}/usr/lib/go/pkg/tool
+	sudo install -d -m 755 ${PKG}/usr/lib/go/src
 
 	cd ..
-	cp -R bin/linux_${GOARCH}/* ${PKG}/usr/bin/
-	cp -R pkg/linux_${GOARCH} ${PKG}/usr/lib/go/pkg/
-	cp -R pkg/tool/linux_${GOARCH} ${PKG}/usr/lib/go/pkg/tool/
-	cp -R src/pkg ${PKG}/usr/lib/go/src
-	cp -R src/cmd ${PKG}/usr/lib/go/src
+	sudo cp -R bin/linux_${GOARCH}/* ${PKG}/usr/bin/
+	sudo cp -R pkg/linux_${GOARCH} ${PKG}/usr/lib/go/pkg/
+	sudo cp -R pkg/tool/linux_${GOARCH} ${PKG}/usr/lib/go/pkg/tool/
+	sudo cp -R src/pkg ${PKG}/usr/lib/go/src
+	sudo cp -R src/cmd ${PKG}/usr/lib/go/src
 
-	find ${PKG}/usr/lib/go/src -name "testdata" | sort -u | xargs rm -rf
+	find ${PKG}/usr/lib/go/src -name "testdata" | sort -u | xargs sudo rm -rf
 }

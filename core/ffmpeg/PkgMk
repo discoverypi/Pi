@@ -44,7 +44,7 @@ pkgmain() {
 
 	make -j${NR_JOBS}
 	arm-unknown-linux-gnueabi-gcc tools/qt-faststart.c -o tools/qt-faststart
-	make DESTDIR=${PKG} install
-	install -v -m755    tools/qt-faststart ${PKG}/usr/bin
+	sudo ABI=$ABI ARCH=$ARCH MODE=$MODE FPU=$FPU FLOAT=$FLOAT TUNE=$TUNE CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CC="$CC" CXX="$CXX" AR="$AR" AS="$AS" RANLIB="$RANLIB" LD="$LD" STRIP="$STRIP" OBJDUMP="$OBJDUMP" LDFLAGS="$LDFLAGS" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PATH=$PATH make DESTDIR=${PKG} install
+	sudo install -v -m755    tools/qt-faststart ${PKG}/usr/bin
 
 }

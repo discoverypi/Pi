@@ -24,16 +24,16 @@ pkgmain() {
 		--without-selinux --without-nscd --cache-file=config.cache
 
 	make -j${NR_JOBS}
-	make DESTDIR=${PKG} install
+	sudo ABI=$ABI ARCH=$ARCH MODE=$MODE FPU=$FPU FLOAT=$FLOAT TUNE=$TUNE CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CC="$CC" CXX="$CXX" AR="$AR" AS="$AS" RANLIB="$RANLIB" LD="$LD" STRIP="$STRIP" OBJDUMP="$OBJDUMP" LDFLAGS="$LDFLAGS" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PATH=$PATH make DESTDIR=${PKG} install
 
-	cp ${PKG}/etc/login.defs login.defs.orig
-	sed -e 's@#MD5_CRYPT_ENAB.no@MD5_CRYPT_ENAB yes@'		\
+	sudo cp ${PKG}/etc/login.defs login.defs.orig
+	sudo sed -e 's@#MD5_CRYPT_ENAB.no@MD5_CRYPT_ENAB yes@'		\
 		-e 's@/var/spool/mail@/var/mail@' login.defs.orig >	\
 		${PKG}/etc/login.defs
 
     #Chande default group tu users(id=100)
-	cp ${PKG}/etc/default/useradd useradd
-	sed 's@GROUP=1000@GROUP=100@' useradd > ${PKG}/etc/default/useradd
+	sudo cp ${PKG}/etc/default/useradd useradd
+	sudo sed 's@GROUP=1000@GROUP=100@' useradd > ${PKG}/etc/default/useradd
 
-	mv -v ${PKG}/usr/bin/passwd ${PKG}/bin
+	sudo mv -v ${PKG}/usr/bin/passwd ${PKG}/bin
 }

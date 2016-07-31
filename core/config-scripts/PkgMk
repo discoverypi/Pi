@@ -17,8 +17,8 @@ pkgmain() {
 	cd ${NAME}-${VERSION}
 	copy_files
 
-	mkdir ${PKG}/etc
-	install -v -m744 shells ${PKG}/etc/shells
-	install -v -m744 fstab ${PKG}/etc/fstab
-	install -v -m744 hosts ${PKG}/etc/hosts
+	sudo mkdir ${PKG}/etc
+	sudo install -v -m744 shells ${PKG}/etc/shells
+	sudo install -v -m744 fstab ${PKG}/etc/fstab
+	sudo install -v -m744 hosts ${PKG}/etc/hosts
 }

@@ -69,12 +69,12 @@ main() {
 		get_pkg_tar "${PKGMK_BASEDIR}/${pkg}/PkgMk" # Get package tar name
 
 		if [ -f ${PKG_TAR} ]; then
-			${TOOLS_BASEDIR}/install.sh ${PKG_TAR}
+			sudo PATH=$PATH ${TOOLS_BASEDIR}/install.sh ${PKG_TAR}
 		else
 			error "${PKG_TAR} has not been succesfully built"
 		fi
 		cd ${OLD}
-		read -p "Press [Enter] key to continue ..."
+		#read -p "Press [Enter] key to continue ..."
 	done;
 }
 

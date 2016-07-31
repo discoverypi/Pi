@@ -25,8 +25,8 @@ pkgmain() {
 		--cache-file=config.cache
 
 	make -j${NR_JOBS}
-	make DESTDIR=${PKG} install
+	sudo ABI=$ABI ARCH=$ARCH MODE=$MODE FPU=$FPU FLOAT=$FLOAT TUNE=$TUNE CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CC="$CC" CXX="$CXX" AR="$AR" AS="$AS" RANLIB="$RANLIB" LD="$LD" STRIP="$STRIP" OBJDUMP="$OBJDUMP" LDFLAGS="$LDFLAGS" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PATH=$PATH make DESTDIR=${PKG} install
 
-	mv ${PKG}/bin/pstree* ${PKG}/usr/bin
-	ln -sfv killall ${PKG}/bin/pidof
+	sudo mv ${PKG}/bin/pstree* ${PKG}/usr/bin
+	sudo ln -sfv killall ${PKG}/bin/pidof
 }

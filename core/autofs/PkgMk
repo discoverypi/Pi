@@ -22,10 +22,10 @@ pkgmain() {
 		--without-openldap --with-libtirpc \
             --mandir=/usr/share/man
 	make -j${NR_JOBS}
-	make DESTDIR=${PKG} install
-	mkdir ${PKG}/etc
-	mkdir ${PKG}/etc/rc.d
-	cp rc-autofs ${PKG}/etc/rc.d/autofs
+	sudo ABI=$ABI ARCH=$ARCH MODE=$MODE FPU=$FPU FLOAT=$FLOAT TUNE=$TUNE CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CC="$CC" CXX="$CXX" AR="$AR" AS="$AS" RANLIB="$RANLIB" LD="$LD" STRIP="$STRIP" OBJDUMP="$OBJDUMP" LDFLAGS="$LDFLAGS" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PATH=$PATH make DESTDIR=${PKG} install
+	sudo mkdir ${PKG}/etc
+	sudo mkdir ${PKG}/etc/rc.d
+	sudo cp rc-autofs ${PKG}/etc/rc.d/autofs
 
 
 }

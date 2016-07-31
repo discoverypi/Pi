@@ -22,11 +22,11 @@ pkgmain() {
 	IPV4_TARGETS="tracepath ping clockdiff rdisc arping"		\
 	IPV6_TARGETS="tracepath6 traceroute6"
 
-	mkdir -p ${PKG}/bin ${PKG}/usr/bin
-	install -v -m755 ping ${PKG}/bin
-	install -v -m755 arping ${PKG}/usr/bin
-	install -v -m755 clockdiff ${PKG}/usr/bin
-	install -v -m755 rdisc ${PKG}/usr/bin
-	install -v -m755 tracepath ${PKG}/usr/bin
-	install -v -m755 trace{path,route}6 ${PKG}/usr/bin
+	sudo mkdir -p ${PKG}/bin ${PKG}/usr/bin
+	sudo install -v -m755 ping ${PKG}/bin
+	sudo install -v -m755 arping ${PKG}/usr/bin
+	sudo install -v -m755 clockdiff ${PKG}/usr/bin
+	sudo install -v -m755 rdisc ${PKG}/usr/bin
+	sudo install -v -m755 tracepath ${PKG}/usr/bin
+	sudo install -v -m755 trace{path,route}6 ${PKG}/usr/bin
 }

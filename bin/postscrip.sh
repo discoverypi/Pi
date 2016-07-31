@@ -3,7 +3,7 @@ mv /Pi/clfs/tools /Pi/tools
 cd /Pi/clfs
 find /Pi/clfs -user pi -exec chown root:root {} \;
 find /Pi/clfs -type d -user pi -exec chown root:root {} \;
-find /Pi/clfs -type l -user pi -exec -h chown root:root {} \;
+find /Pi/clfs -type l -user pi -exec chown -h root:root {} \;
 ln -s usr /Pi/clfs/toolsx
 ln -s ../../bin/bash /Pi/clfs/usr/bin
 cp /Pi/src/ld.so.conf /Pi/clfs/etc/ld.so.conf
@@ -14,7 +14,7 @@ chmod +s /Pi/clfs/bin/su
 cd /Pi/clfs/usr/share/zoneinfo
 tar -xf /Pi/src/zoneinfo.tar
 cd /Pi/clfs 
-touch .firstboot
+touch .postpkg
 grep -Irl toolsx /Pi/clfs/usr/* > /tmp/t.log
 fixtoolsx.sh /tmp/t.log
 cp -r /Pi/firmware/boot /Pi/clfs/boota

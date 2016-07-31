@@ -24,10 +24,10 @@ pkgmain() {
 	#sed -i '/cp -a ffmpeg_compiled/d' Makefile
 	cp ../../../OMXStreamInfo.cpp .
 
-	make ffmpeg
+	sudo ABI=$ABI ARCH=$ARCH MODE=$MODE FPU=$FPU FLOAT=$FLOAT TUNE=$TUNE CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CC="$CC" CXX="$CXX" AR="$AR" AS="$AS" RANLIB="$RANLIB" LD="$LD" STRIP="$STRIP" OBJDUMP="$OBJDUMP" LDFLAGS="$LDFLAGS" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PATH=$PATH make ffmpeg
 read -p "Press [Enter] key to continue"
-	make -j${NR_JOBS}
+	sudo ABI=$ABI ARCH=$ARCH MODE=$MODE FPU=$FPU FLOAT=$FLOAT TUNE=$TUNE CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CC="$CC" CXX="$CXX" AR="$AR" AS="$AS" RANLIB="$RANLIB" LD="$LD" STRIP="$STRIP" OBJDUMP="$OBJDUMP" LDFLAGS="$LDFLAGS" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PATH=$PATH make -j${NR_JOBS}
 	cd ../../pkg
-	tar -xzf ../src/omxplayer-master/omxplayer-dist.tgz
+	sudo tar -xzf ../src/omxplayer-master/omxplayer-dist.tgz
 
 }

@@ -21,8 +21,8 @@ pkgmain() {
 		--prefix=/usr --bindir=/bin --cache-file=config.cache
 
 	make -j${NR_JOBS}
-	make DESTDIR=${PKG} install
+	sudo ABI=$ABI ARCH=$ARCH MODE=$MODE FPU=$FPU FLOAT=$FLOAT TUNE=$TUNE CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CC="$CC" CXX="$CXX" AR="$AR" AS="$AS" RANLIB="$RANLIB" LD="$LD" STRIP="$STRIP" OBJDUMP="$OBJDUMP" LDFLAGS="$LDFLAGS" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PATH=$PATH make DESTDIR=${PKG} install
 
-	mkdir ${PKG}/usr/bin
-	mv ${PKG}/bin/z{egrep,cmp,diff,fgrep,force,grep,less,more,new} ${PKG}/usr/bin
+	sudo mkdir ${PKG}/usr/bin
+	sudo mv ${PKG}/bin/z{egrep,cmp,diff,fgrep,force,grep,less,more,new} ${PKG}/usr/bin
 }

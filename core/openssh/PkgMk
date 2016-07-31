@@ -28,8 +28,8 @@ pkgmain() {
 		--without-stackprotect	--disable-strip
 
 	make -j${NR_JOBS}
-	make DESTDIR=${PKG} install
+	sudo ABI=$ABI ARCH=$ARCH MODE=$MODE FPU=$FPU FLOAT=$FLOAT TUNE=$TUNE CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CC="$CC" CXX="$CXX" AR="$AR" AS="$AS" RANLIB="$RANLIB" LD="$LD" STRIP="$STRIP" OBJDUMP="$OBJDUMP" LDFLAGS="$LDFLAGS" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PATH=$PATH make DESTDIR=${PKG} install
 
-	mkdir -p -v ${PKG}/etc/rc.d
-	install -v -m755 rc-sshd ${PKG}/etc/rc.d/sshd
+	sudo mkdir -p -v ${PKG}/etc/rc.d
+	sudo install -v -m755 rc-sshd ${PKG}/etc/rc.d/sshd
 }

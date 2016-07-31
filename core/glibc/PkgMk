@@ -40,13 +40,14 @@ pkgmain() {
 		--enable-obsolete-rpc					\
 
 	make -j${NR_JOBS} 
-	make  install_root=${PKG}/usr prefix="" install 
-	mkdir ${PKG}/etc
-	touch ${PKG}/etc/ld.so.conf
-	cp -v ../nscd/nscd.conf ${PKG}/etc/nscd.conf
-	mkdir -pv  ${PKG}/var/cache/nscd
-
-	cat > ${PKG}/etc/nsswitch.conf << "EOF"
+	sudo ABI=$ABI ARCH=$ARCH MODE=$MODE FPU=$FPU FLOAT=$FLOAT TUNE=$TUNE CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CC="$CC" CXX="$CXX" AR="$AR" AS="$AS" RANLIB="$RANLIB" LD="$LD" STRIP="$STRIP" OBJDUMP="$OBJDUMP" LDFLAGS="$LDFLAGS" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PATH=$PATH make  install_root=${PKG}/usr prefix="" install 
+	sudo mkdir ${PKG}/etc
+	sudo touch ${PKG}/etc/ld.so.conf
+	sudo cp -v ../nscd/nscd.conf ${PKG}/etc/nscd.conf
+	sudo mkdir -pv  ${PKG}/var/cache/nscd
+	
+	mkdir tmp
+	cat > tmp/nsswitch.conf << "EOF"
 # Begin /etc/nsswitch.conf
 
 passwd: files
@@ -64,21 +65,22 @@ rpc: files
 # End /etc/nsswitch.conf
 EOF
 
-cat > ${PKG}/etc/ld.so.conf << "EOF"
+cat > tmp/ld.so.conf << "EOF"
 # Begin /etc/ld.so.conf
 /usr/lib
 /opt/lib
 
 EOF
+sudo cp tmp/* ${PKG}/etc/.
 
-mkdir -pv ${PKG}/etc/ld.so.conf.d
-mkdir ${PKG}/lib
-cp ${PKG}/usr/lib/libc.so ${PKG}/lib/.
-cp ${PKG}/usr/lib/ld-2.13.so ${PKG}/lib/ld-linux-armhf.so.3
-cp ${PKG}/usr/lib/libc.so.6 ${PKG}/lib/.
-cp ${PKG}/usr/lib/libc_nonshared.a ${PKG}/lib/.
-cp ${PKG}/usr/lib/libpthread.so.0 ${PKG}/lib/.
-cp ${PKG}/usr/lib/libpthread_nonshared.a ${PKG}/lib/.
-ln -sfv ld-linux-armhf.so.3 ${PKG}/lib/ld-linux.so.3
+sudo mkdir -pv ${PKG}/etc/ld.so.conf.d
+sudo mkdir ${PKG}/lib
+sudo cp ${PKG}/usr/lib/libc.so ${PKG}/lib/.
+sudo cp ${PKG}/usr/lib/ld-2.13.so ${PKG}/lib/ld-linux-armhf.so.3
+sudo cp ${PKG}/usr/lib/libc.so.6 ${PKG}/lib/.
+sudo cp ${PKG}/usr/lib/libc_nonshared.a ${PKG}/lib/.
+sudo cp ${PKG}/usr/lib/libpthread.so.0 ${PKG}/lib/.
+sudo cp ${PKG}/usr/lib/libpthread_nonshared.a ${PKG}/lib/.
+sudo ln -sfv ld-linux-armhf.so.3 ${PKG}/lib/ld-linux.so.3
 
 }

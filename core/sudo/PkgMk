@@ -23,7 +23,7 @@ pkgmain() {
 		--with-passprompt="[sudo] password for %p" 
 
 	make -j${NR_JOBS}
-	make DESTDIR=${PKG} install
-	ln -sfv libsudo_util.so.0.0.0 ${PKG}/usr/lib/sudo/libsudo_util.so.0
+	sudo ABI=$ABI ARCH=$ARCH MODE=$MODE FPU=$FPU FLOAT=$FLOAT TUNE=$TUNE CFLAGS="$CFLAGS" CPPFLAGS="$CPPFLAGS" CC="$CC" CXX="$CXX" AR="$AR" AS="$AS" RANLIB="$RANLIB" LD="$LD" STRIP="$STRIP" OBJDUMP="$OBJDUMP" LDFLAGS="$LDFLAGS" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PATH=$PATH make DESTDIR=${PKG} install
+	sudo ln -sfv libsudo_util.so.0.0.0 ${PKG}/usr/lib/sudo/libsudo_util.so.0
 
 }
